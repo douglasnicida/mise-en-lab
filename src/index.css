@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --color-bg: #fdfcf8;
+    --color-surface: #f7f3eb;
+    --color-primary: #4f8244;
+    --color-accent: #e5622a;
+    --color-text: #2e2519;
+    --color-muted: #a97234;
+    --color-border: #dfd4bb;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-sage-500 text-linen-50 px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-sage-600 transition-colors duration-200;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-sage-500 text-sage-600 px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-sage-50 transition-colors duration-200;
+  }
+  .tag {
+    @apply inline-block text-xs tracking-widest uppercase px-3 py-1 rounded-full font-medium;
+  }
+  .section-label {
+    @apply text-xs tracking-[0.2em] uppercase text-earth-500 font-medium;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
