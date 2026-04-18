@@ -1,302 +1,212 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
+const rev = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
     opacity: 1, y: 0,
     transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
-// =============================================
-// Informações de contato
-// Substitua pelos dados reais do grupo
-// =============================================
+/* CONTATO: Edite os dados de contato */
 const infoContato = [
-  {
-    icone: '📧',
-    titulo: 'E-mail',
-    valor: '[email.do.grupo@dac.unicamp.br]',
-    link: 'mailto:[email.do.grupo@dac.unicamp.br]',
-  },
-  {
-    icone: '🏫',
-    titulo: 'Instituição',
-    valor: 'Unicamp — Faculdade de Ciências Aplicadas, Limeira',
-    link: null,
-  },
-  {
-    icone: '📱',
-    titulo: 'Instagram',
-    valor: '@[perfil_do_grupo]',
-    link: 'https://instagram.com/[perfil_do_grupo]',
-  },
+  { label: 'E-mail',      valor: '[email@dac.unicamp.br]', href: 'mailto:[email]' },
+  { label: 'Instituição', valor: 'Unicamp — Limeira, SP',  href: null },
+  { label: 'Instagram',   valor: '@[perfil_do_grupo]',     href: 'https://instagram.com/[perfil]' },
 ];
 
-// =============================================
-// FAQ — Perguntas Frequentes
-// Substitua pelas dúvidas mais comuns sobre o grupo
-// =============================================
+/* CONTATO: Edite as perguntas frequentes */
 const faq = [
-  {
-    pergunta: '[Pergunta frequente 1 — ex: Posso usar os conteúdos deste site?]',
-    resposta: '[Resposta completa à pergunta 1]',
-  },
-  {
-    pergunta: '[Pergunta frequente 2 — ex: Como posso colaborar com o grupo?]',
-    resposta: '[Resposta completa à pergunta 2]',
-  },
-  {
-    pergunta: '[Pergunta frequente 3 — ex: O site ainda será atualizado?]',
-    resposta: '[Resposta completa à pergunta 3]',
-  },
+  { q: '[Pergunta 1 — ex: Posso usar os conteúdos deste site?]', a: '[Resposta completa]' },
+  { q: '[Pergunta 2 — ex: Como posso colaborar com o grupo?]',   a: '[Resposta completa]' },
+  { q: '[Pergunta 3 — ex: O site ainda será atualizado?]',       a: '[Resposta completa]' },
 ];
+
+const inputCls = `w-full bg-transparent border border-linen-300 text-dark text-[14px] px-5 py-3.5
+  placeholder-dark/25 focus:outline-none focus:border-dark/50 transition-colors duration-200`;
 
 export default function Contato() {
-  const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
+  const [form, setForm] = useState({ nome: '', email: '', mensagem: '' });
   const [enviado, setEnviado] = useState(false);
-  const [faqAberto, setFaqAberto] = useState(null);
+  const [open, setOpen] = useState(null);
 
-  const handleChange = e =>
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-
+  const handleChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
   const handleSubmit = e => {
     e.preventDefault();
-    // TODO: Conecte a um serviço de formulário como Formspree, EmailJS, etc.
-    // Exemplo Formspree: fetch('https://formspree.io/f/SEU_ID', { method: 'POST', body: JSON.stringify(formData) })
+    // TODO: integre com Formspree ou EmailJS
     setEnviado(true);
   };
 
   return (
-    <div>
-      {/* =============================================
-          SEÇÃO: Hero da página Contato
-          ============================================= */}
-      <section className="bg-linen-100 py-20 relative overflow-hidden">
+    <div className="bg-bg">
+
+      {/* ══════════════════
+          HERO
+          ══════════════════ */}
+      <section className="page-hero">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-20 right-0 w-72 h-72 rounded-full bg-clay-100 opacity-50 blur-3xl" />
+          <div className="absolute top-0 right-0 w-[420px] h-[420px] rounded-full bg-slate-100/80 blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[460px] h-[460px] rounded-full bg-teal-100/75 blur-[130px]" />
         </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="section-label mb-3"
-          >
-            Fale conosco
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-5xl font-bold text-bark-700 mb-4"
-          >
-            Contato
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-earth-600 text-lg max-w-xl mx-auto leading-relaxed"
-          >
-            {/* CONTATO HERO: Texto de convite ao contato */}
-            [Texto de convite — ex: "Tem alguma dúvida, sugestão ou quer saber mais sobre nosso grupo? Entre em contato!"]
+        <div className="page-hero-shell">
+          <div className="page-hero-kicker">
+            <div className="page-hero-rule" />
+            <span className="eyebrow text-teal-600">Fale conosco</span>
+          </div>
+          <div className="overflow-hidden mb-1">
+            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="page-hero-title font-semibold">
+              Entre em
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden mb-7">
+            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
+              className="page-hero-accent">
+              Contato
+            </motion.h1>
+          </div>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6 }}
+            className="page-hero-copy">
+            {/* CONTATO HERO: Texto de convite */}
+            [Texto de convite — dúvida, sugestão ou interesse em saber mais sobre o grupo.]
           </motion.p>
         </div>
       </section>
 
-      {/* =============================================
-          SEÇÃO: Formulário + Informações de Contato
-          ============================================= */}
-      <section className="py-24 bg-linen-50">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      {/* ══════════════════
+          FORMULÁRIO + INFO
+          ══════════════════ */}
+      <section className="section-band py-24">
+        <div className="section-inner max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16">
+
           {/* Formulário */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="font-display text-2xl font-bold text-bark-700 mb-6">
-              Envie uma mensagem
-            </h2>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}
+            className="lg:col-span-6">
+            <p className="eyebrow text-stone-500 mb-8">Formulário</p>
 
             {enviado ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-sage-50 border border-sage-200 rounded-2xl p-8 text-center"
-              >
-                <div className="text-4xl mb-4">🌿</div>
-                <h3 className="font-display text-xl font-semibold text-sage-700 mb-2">
-                  Mensagem enviada!
-                </h3>
-                <p className="text-sage-600 text-sm">
+              <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
+                className="border border-linen-300 p-12 text-center">
+                <p className="font-display text-[28px] font-semibold text-dark mb-3">
+                  Mensagem enviada ✓
+                </p>
+                <p className="text-[13px] text-dark/45 mb-6">
                   {/* FORMULÁRIO: Mensagem de confirmação */}
                   [Mensagem de confirmação — ex: "Obrigada pelo contato! Responderemos em breve."]
                 </p>
-                <button
-                  onClick={() => setEnviado(false)}
-                  className="mt-4 text-sm text-sage-600 underline"
-                >
-                  Enviar outra mensagem
+                <button onClick={() => setEnviado(false)}
+                  className="eyebrow text-[10px] text-teal-600 hover:text-teal-800 transition-colors">
+                  Enviar outra mensagem →
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Campo Nome */}
-                <div>
-                  <label className="block section-label mb-2" htmlFor="nome">
-                    Seu nome
-                  </label>
-                  <input
-                    id="nome"
-                    name="nome"
-                    type="text"
-                    required
-                    value={formData.nome}
-                    onChange={handleChange}
-                    placeholder="[Nome completo]"
-                    className="w-full px-4 py-3 rounded-xl border border-linen-300 bg-white text-bark-700 placeholder-linen-400 focus:outline-none focus:ring-2 focus:ring-sage-300 focus:border-sage-400 transition-colors text-sm"
-                  />
+              <form onSubmit={handleSubmit} className="space-y-0 border border-linen-300 divide-y divide-linen-300">
+                {/* Nome */}
+                <div className="p-0">
+                  <label className="eyebrow text-[9px] text-dark/30 block px-5 pt-4">Nome</label>
+                  <input id="nome" name="nome" type="text" required
+                    value={form.nome} onChange={handleChange}
+                    placeholder="[Seu nome completo]"
+                    className={`${inputCls} border-0 pt-1`} />
                 </div>
-
-                {/* Campo E-mail */}
+                {/* Email */}
                 <div>
-                  <label className="block section-label mb-2" htmlFor="email">
-                    Seu e-mail
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
+                  <label className="eyebrow text-[9px] text-dark/30 block px-5 pt-4">E-mail</label>
+                  <input id="email" name="email" type="email" required
+                    value={form.email} onChange={handleChange}
                     placeholder="[seu@email.com]"
-                    className="w-full px-4 py-3 rounded-xl border border-linen-300 bg-white text-bark-700 placeholder-linen-400 focus:outline-none focus:ring-2 focus:ring-sage-300 focus:border-sage-400 transition-colors text-sm"
-                  />
+                    className={`${inputCls} border-0 pt-1`} />
                 </div>
-
-                {/* Campo Mensagem */}
+                {/* Mensagem */}
                 <div>
-                  <label className="block section-label mb-2" htmlFor="mensagem">
-                    Mensagem
-                  </label>
-                  <textarea
-                    id="mensagem"
-                    name="mensagem"
-                    rows={5}
-                    required
-                    value={formData.mensagem}
-                    onChange={handleChange}
+                  <label className="eyebrow text-[9px] text-dark/30 block px-5 pt-4">Mensagem</label>
+                  <textarea id="mensagem" name="mensagem" rows={5} required
+                    value={form.mensagem} onChange={handleChange}
                     placeholder="[Escreva sua mensagem aqui]"
-                    className="w-full px-4 py-3 rounded-xl border border-linen-300 bg-white text-bark-700 placeholder-linen-400 focus:outline-none focus:ring-2 focus:ring-sage-300 focus:border-sage-400 transition-colors text-sm resize-none"
-                  />
+                    className={`${inputCls} border-0 pt-1 resize-none`} />
                 </div>
-
-                {/* Aviso de integração */}
-                <p className="text-xs text-earth-400 italic">
-                  {/* FORMULÁRIO: Remova este aviso após configurar um serviço de e-mail */}
-                  ⚠️ [Configure um serviço de formulário (ex: Formspree) no handleSubmit deste arquivo antes de publicar]
-                </p>
-
-                <button type="submit" className="btn-primary w-full justify-center">
-                  Enviar mensagem →
-                </button>
+                {/* Submit */}
+                <div className="p-5 flex items-center justify-between gap-4">
+                  <p className="text-[11px] text-dark/25 italic">
+                    ⚠ Configure Formspree/EmailJS antes de publicar
+                  </p>
+                  <button type="submit" className="btn-cta shrink-0">
+                    Enviar ↗
+                  </button>
+                </div>
               </form>
             )}
           </motion.div>
 
-          {/* Informações */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="font-display text-2xl font-bold text-bark-700 mb-6">
-              Onde nos encontrar
-            </h2>
+          {/* Info */}
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}
+            className="lg:col-span-4 lg:col-start-9">
+            <p className="eyebrow text-stone-500 mb-8">Informações</p>
 
-            <div className="space-y-4 mb-10">
+            <div className="divide-y divide-linen-300 border-t border-b border-linen-300 mb-10">
               {infoContato.map((info, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 bg-white rounded-2xl p-5 border border-linen-300"
-                >
-                  <span className="text-2xl">{info.icone}</span>
-                  <div>
-                    <p className="section-label text-xs mb-1">{info.titulo}</p>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-sage-600 hover:text-sage-800 transition-colors font-medium"
-                      >
+                <div key={i} className="py-5">
+                  <p className="eyebrow text-[9px] text-dark/30 mb-1.5">{info.label}</p>
+                  {info.href
+                    ? <a href={info.href} target="_blank" rel="noopener noreferrer"
+                        className="text-[14px] font-medium text-dark hover:text-teal-600 transition-colors">
                         {info.valor}
                       </a>
-                    ) : (
-                      <p className="text-sm text-bark-600 font-medium">{info.valor}</p>
-                    )}
-                  </div>
+                    : <p className="text-[14px] font-medium text-dark">{info.valor}</p>
+                  }
                 </div>
               ))}
             </div>
 
-            {/* Mapa / localização decorativo */}
-            <div className="bg-earth-50 rounded-2xl border border-earth-200 p-6 text-center">
-              <p className="text-3xl mb-3">🗺️</p>
-              <h3 className="font-display text-lg font-semibold text-bark-700 mb-2">
-                Unicamp Limeira
-              </h3>
-              <p className="text-sm text-earth-500">
-                {/* LOCALIZAÇÃO: Endereço completo */}
-                [Endereço da faculdade — ex: Rua Pedro Zaccaria, 1300 — Jardim Santa Luíza, Limeira - SP]
+            {/* Localização */}
+            <div className="bg-surface border border-linen-300 p-6">
+              <p className="eyebrow text-[9px] text-dark/30 mb-3">Localização</p>
+              <p className="font-display text-[17px] font-semibold text-dark mb-1">Unicamp Limeira</p>
+              <p className="text-[12px] text-dark/45 leading-relaxed">
+                {/* CONTATO: Endereço completo */}
+                [Rua Pedro Zaccaria, 1300<br />Jardim Santa Luíza, Limeira - SP]
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* =============================================
-          SEÇÃO: FAQ — Perguntas Frequentes
-          Edite o array `faq` neste arquivo
-          ============================================= */}
-      <section className="py-20 bg-linen-100">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <p className="section-label mb-2">Dúvidas comuns</p>
-            <h2 className="font-display text-3xl font-bold text-bark-700">
-              Perguntas Frequentes
-            </h2>
-          </div>
+      {/* ══════════════════
+          FAQ
+          ══════════════════ */}
+      <section className="section-band-soft py-24 border-t border-linen-300">
+        <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
+          <p className="eyebrow text-stone-500 mb-6">Dúvidas</p>
+          <h2 className="font-display font-semibold text-dark mb-14"
+            style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
+            Perguntas frequentes
+          </h2>
 
-          <div className="space-y-3">
+          <div className="divide-y divide-linen-300 border-t border-linen-300">
             {faq.map((item, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl border border-linen-300 overflow-hidden"
-              >
-                <button
-                  onClick={() => setFaqAberto(faqAberto === i ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left"
-                >
-                  <span className="font-medium text-bark-700 text-sm">{item.pergunta}</span>
-                  <span className={`text-sage-500 transition-transform duration-200 ${faqAberto === i ? 'rotate-180' : ''}`}>
-                    ▾
+              <motion.div key={i} custom={i} variants={rev} initial="hidden"
+                whileInView="show" viewport={{ once: true }}>
+                <button onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full flex items-center justify-between py-6 text-left gap-6 group">
+                  <span className="text-[15px] font-medium text-dark group-hover:text-teal-600 transition-colors">
+                    {item.q}
+                  </span>
+                  <span className={`text-dark/40 text-xl shrink-0 transition-transform duration-200 ${open === i ? 'rotate-45' : ''}`}>
+                    +
                   </span>
                 </button>
                 <motion.div
-                  animate={faqAberto === i ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <p className="px-6 pb-5 text-sm text-earth-500 leading-relaxed">
-                    {item.resposta}
+                  animate={{ height: open === i ? 'auto' : 0, opacity: open === i ? 1 : 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden">
+                  <p className="pb-6 text-[13px] text-dark/50 leading-relaxed">
+                    {item.a}
                   </p>
                 </motion.div>
               </motion.div>
@@ -304,6 +214,7 @@ export default function Contato() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

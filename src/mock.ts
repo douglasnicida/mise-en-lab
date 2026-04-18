@@ -15,7 +15,8 @@ export const membros = [
       nome: '[Nome do Membro 1]',
       papel: '[Área de interesse / função]',
       bio: '[Breve apresentação do membro — 1 a 2 frases sobre interesses ou trajetória]',
-      avatar: null, // URL da foto ou null para usar placeholder
+      // URL da foto — placeholders estáveis (picsum); substitua pelas fotos reais do grupo
+      avatar: 'https://picsum.photos/seed/nutri-membro-1/480/600',
       lattes: '#',  // Link para o Lattes / LinkedIn
     },
     {
@@ -23,7 +24,7 @@ export const membros = [
       nome: '[Nome do Membro 2]',
       papel: '[Área de interesse / função]',
       bio: '[Breve apresentação do membro — 1 a 2 frases sobre interesses ou trajetória]',
-      avatar: null,
+      avatar: 'https://picsum.photos/seed/nutri-membro-2/480/600',
       lattes: '#',
     },
     {
@@ -31,7 +32,7 @@ export const membros = [
       nome: '[Nome do Membro 3]',
       papel: '[Área de interesse / função]',
       bio: '[Breve apresentação do membro — 1 a 2 frases sobre interesses ou trajetória]',
-      avatar: null,
+      avatar: 'https://picsum.photos/seed/nutri-membro-3/480/600',
       lattes: '#',
     },
     {
@@ -39,7 +40,7 @@ export const membros = [
       nome: '[Nome do Membro 4]',
       papel: '[Área de interesse / função]',
       bio: '[Breve apresentação do membro — 1 a 2 frases sobre interesses ou trajetória]',
-      avatar: null,
+      avatar: 'https://picsum.photos/seed/nutri-membro-4/480/600',
       lattes: '#',
     },
     {
@@ -47,7 +48,7 @@ export const membros = [
       nome: '[Nome do Membro 5]',
       papel: '[Área de interesse / função]',
       bio: '[Breve apresentação do membro — 1 a 2 frases sobre interesses ou trajetória]',
-      avatar: null,
+      avatar: 'https://picsum.photos/seed/nutri-membro-5/480/600',
       lattes: '#',
     },
   ];

@@ -1,47 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap');
 
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
 @layer base {
   :root {
-    --color-bg: #fdfcf8;
-    --color-surface: #f7f3eb;
-    --color-primary: #4f8244;
-    --color-accent: #e5622a;
-    --color-text: #2e2519;
-    --color-muted: #a97234;
-    --color-border: #dfd4bb;
+    --bg:       #FCFDFC;
+    --surface:  #F5F8F8;
+    --dark:     #203331;
+    --dark2:    #2A403D;
+    --primary:  #5E8F88;
+    --accent:   #678A97;
+    --muted:    #7FA9A2;
+    --text:     #203331;
+    --subtle:   #96A4A0;
+    --border:   #E4EBEA;
   }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--primary) 50%, var(--border)) var(--surface);
+  }
   body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at top left, rgba(228, 239, 238, 0.5), transparent 28%),
+      radial-gradient(circle at right 14%, rgba(228, 236, 240, 0.45), transparent 24%);
   }
-  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; letter-spacing: -0.01em; }
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--primary) 32%, transparent);
+  color: var(--text);
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center gap-2 bg-sage-500 text-linen-50 px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-sage-600 transition-colors duration-200;
+  .btn-cta {
+    @apply inline-flex items-center gap-2 bg-teal-500 text-linen-50 text-xs font-medium tracking-[0.12em] uppercase px-6 py-3 border border-teal-500 hover:bg-teal-600 hover:border-teal-600 transition-all duration-300;
   }
-  .btn-outline {
-    @apply inline-flex items-center gap-2 border border-sage-500 text-sage-600 px-6 py-3 rounded-full font-medium text-sm tracking-wide hover:bg-sage-50 transition-colors duration-200;
+  .btn-cta-dark {
+    @apply inline-flex items-center gap-2 bg-linen-100 text-dark text-xs font-medium tracking-[0.12em] uppercase px-6 py-3 border border-linen-100 hover:bg-transparent hover:text-linen-100 transition-all duration-300;
   }
-  .tag {
-    @apply inline-block text-xs tracking-widest uppercase px-3 py-1 rounded-full font-medium;
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 bg-transparent text-dark text-xs font-medium tracking-[0.12em] uppercase px-6 py-3 border border-stone-300 hover:border-dark transition-all duration-300;
   }
-  .section-label {
-    @apply text-xs tracking-[0.2em] uppercase text-earth-500 font-medium;
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    @apply text-[10px] tracking-[0.22em] uppercase;
   }
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  .tag-sm {
+    font-family: 'DM Mono', monospace;
+    @apply text-[9px] tracking-[0.18em] uppercase px-2.5 py-1.5 border;
+  }
+  .page-hero {
+    @apply relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-14 bg-linen-50 border-b border-linen-300/80;
+  }
+  .page-hero-shell {
+    @apply max-w-7xl mx-auto px-6 md:px-10 relative;
+  }
+  .page-hero-kicker {
+    @apply flex items-center gap-4 mb-6;
+  }
+  .page-hero-rule {
+    @apply h-px w-10 bg-teal-300;
+  }
+  .page-hero-copy {
+    @apply text-[14px] text-dark/55 leading-relaxed max-w-[560px];
+  }
+  .page-hero-title {
+    @apply font-display text-dark leading-[0.95];
+    font-size: clamp(30px, 4.4vw, 56px);
+  }
+  .page-hero-accent {
+    @apply font-display font-light italic text-slate-500 leading-[0.95];
+    font-size: clamp(30px, 4.4vw, 56px);
+  }
+  .section-divider-top {
+    @apply border-t border-linen-300;
+  }
+  .section-band {
+    @apply relative overflow-hidden;
+  }
+  .section-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at top right, rgba(228, 239, 238, 0.5), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 253, 252, 0.96));
+  }
+  .section-band-soft {
+    @apply relative overflow-hidden bg-surface/85;
+  }
+  .section-band-soft::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at left top, rgba(228, 236, 240, 0.4), transparent 24%),
+      linear-gradient(180deg, rgba(245, 248, 248, 0.94), rgba(252, 253, 252, 0.98));
+  }
+  .section-band-dark {
+    @apply relative overflow-hidden bg-dark2;
+  }
+  .section-band-dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at top right, rgba(94, 143, 136, 0.18), transparent 24%),
+      linear-gradient(180deg, rgba(42, 64, 61, 0.98), rgba(32, 51, 49, 1));
+  }
+  .section-inner {
+    @apply relative z-10;
+  }
+  .section-panel {
+    @apply rounded-[1.75rem] border border-linen-300 bg-white/72 shadow-[0_18px_50px_rgba(32,51,49,0.06)];
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-surface); }
-::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+/* Root scrollbars (WebKit) — matches teal / stone palette */
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary) 55%, var(--border)),
+    color-mix(in srgb, var(--accent) 40%, var(--border))
+  );
+  border-radius: 999px;
+  border: 2px solid var(--surface);
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--primary) 78%, transparent),
+    color-mix(in srgb, var(--accent) 58%, transparent)
+  );
+  border: 2px solid var(--surface);
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar-corner {
+  background: var(--bg);
+}

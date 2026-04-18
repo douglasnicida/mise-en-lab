@@ -1,105 +1,87 @@
 import { motion } from 'framer-motion';
 import { membros } from '../data/content';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
+const rev = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
     opacity: 1, y: 0,
     transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
-// Cores de avatar por ordem (para diferenciar visualmente sem foto)
-const avatarColors = [
-  'bg-sage-200 text-sage-700',
-  'bg-earth-200 text-earth-700',
-  'bg-clay-200 text-clay-700',
-  'bg-sage-300 text-sage-800',
-  'bg-earth-300 text-earth-800',
-];
-
 export default function Membros() {
   return (
-    <div>
-      {/* =============================================
-          SEÇÃO: Hero da página Membros
-          ============================================= */}
-      <section className="bg-linen-100 py-20 relative overflow-hidden">
+    <div className="bg-bg">
+
+      {/* ══════════════════
+          HERO
+          ══════════════════ */}
+      <section className="page-hero">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-72 h-72 rounded-full bg-sage-100 opacity-50 blur-3xl -translate-x-1/2" />
+          <div className="absolute top-0 left-0 w-[420px] h-[420px] rounded-full bg-teal-100/80 blur-[120px]" />
+          <div className="absolute right-0 bottom-0 w-[480px] h-[480px] rounded-full bg-slate-100/75 blur-[130px]" />
         </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="section-label mb-3"
-          >
-            Quem faz acontecer
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-5xl font-bold text-bark-700 mb-4"
-          >
-            Nossos Membros
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-earth-600 text-lg max-w-xl mx-auto leading-relaxed"
-          >
+        <div className="page-hero-shell">
+          <div className="page-hero-kicker">
+            <div className="page-hero-rule" />
+            <span className="eyebrow text-teal-600">Equipe</span>
+          </div>
+          <div className="overflow-hidden mb-1">
+            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="page-hero-title font-semibold">
+              Nossos
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden mb-7">
+            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
+              className="page-hero-accent">
+              Membros
+            </motion.h1>
+          </div>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6 }}
+            className="page-hero-copy">
             {/* MEMBROS HERO: Descrição da equipe */}
-            [Breve descrição da equipe — quantas pessoas são, o que têm em comum, o que as une no grupo]
+            [Breve descrição — quantas pessoas, o que têm em comum, o que as une no grupo.]
           </motion.p>
         </div>
       </section>
 
-      {/* =============================================
-          SEÇÃO: Grid de membros
-          Dados em src/data/content.js
-          ============================================= */}
-      <section className="py-24 bg-linen-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {membros.map((membro, i) => (
-              <motion.div
-                key={membro.id}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white rounded-3xl border border-linen-300 p-8 card-hover flex flex-col items-center text-center"
-              >
-                {/* Avatar */}
-                <div className={`w-24 h-24 rounded-full mb-5 flex items-center justify-center text-3xl font-display font-bold border-4 border-linen-200 overflow-hidden ${avatarColors[i % avatarColors.length]}`}>
-                  {membro.avatar
-                    ? <img src={membro.avatar} alt={membro.nome} className="w-full h-full object-cover" />
-                    : membro.nome.charAt(0)
+      {/* ══════════════════
+          GRID DE MEMBROS
+          ══════════════════ */}
+      <section className="section-band py-16">
+        <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-linen-300">
+            {membros.map((m, i) => (
+              <motion.div key={m.id} custom={i} variants={rev} initial="hidden"
+                whileInView="show" viewport={{ once: true }}
+                className="bg-bg hover:bg-surface transition-colors duration-300 p-10 flex flex-col">
+
+                {/* Avatar grande */}
+                <div className="w-20 h-20 bg-linen-200 border border-linen-300 rounded-full mb-6 flex items-center justify-center overflow-hidden">
+                  {m.avatar
+                    ? <img src={m.avatar} alt={m.nome} className="w-full h-full object-cover" />
+                    : <span className="font-display text-3xl font-semibold text-dark/30">{m.nome.charAt(0)}</span>
                   }
                 </div>
 
-                {/* Nome */}
-                <h2 className="font-display text-xl font-semibold text-bark-700 mb-1">
-                  {membro.nome}
+                {/* Info */}
+                <p className="eyebrow text-stone-500 mb-2">{m.papel}</p>
+                <h2 className="font-display text-[26px] font-semibold text-dark leading-tight mb-4">
+                  {m.nome}
                 </h2>
-
-                {/* Papel */}
-                <p className="section-label text-xs mb-4">{membro.papel}</p>
-
-                {/* Bio */}
-                <p className="text-sm text-earth-500 leading-relaxed flex-1 mb-6">
-                  {membro.bio}
+                <p className="text-[13px] text-dark/45 leading-relaxed flex-1 mb-6">
+                  {m.bio}
                 </p>
 
-                {/* Link externo */}
-                {membro.lattes && membro.lattes !== '#' && (
-                  <a
-                    href={membro.lattes}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline text-xs py-2 px-4"
-                  >
-                    Ver Lattes / Perfil
+                {/* Link */}
+                {m.lattes && m.lattes !== '#' && (
+                  <a href={m.lattes} target="_blank" rel="noopener noreferrer"
+                    className="eyebrow text-[10px] text-teal-600 hover:text-teal-800 transition-colors">
+                    Lattes / Perfil ↗
                   </a>
                 )}
               </motion.div>
@@ -108,58 +90,57 @@ export default function Membros() {
         </div>
       </section>
 
-      {/* =============================================
-          SEÇÃO: Professora / Orientadora
-          Substitua pelos dados reais do(a) docente
-          ============================================= */}
-      <section className="py-20 bg-sage-700">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-sage-600 rounded-3xl p-10 text-center border border-sage-500"
-          >
-            {/* Avatar docente */}
-            <div className="w-20 h-20 rounded-full bg-sage-300 mx-auto mb-5 flex items-center justify-center">
-              <span className="text-3xl text-sage-700 font-display font-bold">
+      {/* ══════════════════
+          ORIENTAÇÃO — dark strip
+          ══════════════════ */}
+      <section className="section-band-dark border-y border-white/8">
+        <div className="section-inner max-w-7xl mx-auto px-6 md:px-10 py-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="eyebrow text-linen-300/30 mb-5">Orientação</p>
+            <h2 className="font-display font-semibold text-linen-50 leading-tight mb-4"
+              style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
+              {/* DOCENTE: Nome do professor */}
+              [Prof./Profa.<br /><em className="font-light text-teal-400">[Nome do Docente]]</em>
+            </h2>
+            <p className="eyebrow text-linen-300/30 mb-6">
+              {/* DOCENTE: Cargo / disciplina */}
+              [Cargo · Disciplina]
+            </p>
+            <p className="text-[13px] text-linen-300/45 leading-relaxed max-w-[380px]">
+              {/* DOCENTE: Mini bio / agradecimento */}
+              [Breve agradecimento ou apresentação do/a docente responsável pela disciplina.]
+            </p>
+          </div>
+          {/* Avatar grande docente */}
+          <div className="flex justify-center md:justify-end">
+            <div className="w-40 h-40 bg-dark border border-white/10 rounded-full flex items-center justify-center">
+              <span className="font-display text-5xl font-semibold text-linen-300/20">
                 {/* DOCENTE: Inicial do nome */}
                 [P]
               </span>
             </div>
-            <p className="section-label text-sage-200 mb-2">Orientação</p>
-            <h2 className="font-display text-2xl font-bold text-linen-50 mb-1">
-              {/* DOCENTE: Nome do(a) professor(a) */}
-              [Prof./Profa. Nome do Docente]
-            </h2>
-            <p className="text-sage-200 text-sm mb-4">
-              {/* DOCENTE: Cargo / disciplina */}
-              [Cargo e disciplina — ex: Professora Doutora · NT402 - Técnica Dietética]
-            </p>
-            <p className="text-sage-100 text-sm leading-relaxed max-w-lg mx-auto">
-              {/* DOCENTE: Mini bio ou agradecimento */}
-              [Breve agradecimento ou apresentação do(a) docente responsável pela disciplina]
-            </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* =============================================
-          SEÇÃO: Agradecimentos / Apoio
-          ============================================= */}
-      <section className="py-16 bg-linen-100">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="section-label mb-3">Agradecimentos</p>
-          <h2 className="font-display text-2xl font-bold text-bark-700 mb-4">
+      {/* ══════════════════
+          AGRADECIMENTOS
+          ══════════════════ */}
+      <section className="section-band-soft py-20 border-t border-linen-300">
+        <div className="section-inner max-w-3xl mx-auto px-6 text-center">
+          <p className="eyebrow text-stone-500 mb-5">Agradecimentos</p>
+          <h2 className="font-display font-semibold text-dark mb-4"
+            style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
             {/* AGRADECIMENTOS: Título */}
-            [Título — ex: "Obrigada a todos que tornaram isso possível"]
+            [Obrigado/a a quem<br /><em className="font-light text-stone-500">tornou isso possível]</em>
           </h2>
-          <p className="text-earth-600 leading-relaxed max-w-lg mx-auto">
-            {/* AGRADECIMENTOS: Texto de agradecimento */}
+          <p className="text-[13px] text-dark/50 leading-relaxed max-w-lg mx-auto">
+            {/* AGRADECIMENTOS: Texto */}
             [Agradecimentos à instituição, professores, laboratórios, colegas de turma, etc.]
           </p>
         </div>
       </section>
+
     </div>
   );
 }
