@@ -8,7 +8,7 @@ const links = [
   { to: '/sobre', label: 'Sobre' },
   { to: '/trabalhos', label: 'Trabalhos' },
   { to: '/membros', label: 'Membros' },
-  { to: '/contato', label: 'Contato' },
+  { to: '/contato', label: 'Ficha Técnica' },
 ];
 
 export default function Navbar() {

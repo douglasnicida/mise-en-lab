@@ -45,9 +45,6 @@ function HeroPortraitWindow({ m, className = '', delay = 0 }) {
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-dark/92 via-dark/28 to-transparent" />
-          <div className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm">
-            Integrante
-          </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 z-10 p-4 text-linen-50">
           <div className="translate-y-2 transition-transform duration-500 group-hover:translate-y-0">
@@ -57,9 +54,9 @@ function HeroPortraitWindow({ m, className = '', delay = 0 }) {
             <p className="mt-1 text-[12px] leading-relaxed text-white/78">
               {m.papel}
             </p>
-            <p className="mt-3 max-w-[18rem] text-[12px] leading-6 text-white/0 transition-colors duration-500 group-hover:text-white/78">
+            {/* <p className="mt-3 max-w-[18rem] text-[12px] leading-6 text-white/0 transition-colors duration-500 group-hover:text-white/78">
               {m.bio || '[Breve apresentação do integrante]'}
-            </p>
+            </p> */}
           </div>
         </div>
       </Link>
@@ -108,7 +105,7 @@ export default function Home() {
                     className="eyebrow text-[60px]! font-semibold tracking-wide text-dark"
                     style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
                     >
-                    Nome
+                    Mise En
                     </motion.h1>
                 </div>
                 <div className="overflow-hidden">
@@ -119,7 +116,7 @@ export default function Home() {
                     className="eyebrow text-[60px]! font-semibold tracking-wide text-slate-500"
                     style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
                     >
-                    Grupo
+                    Lab
                     </motion.h1>
                 </div>
               </div>
@@ -145,7 +142,7 @@ export default function Home() {
             </div>
 
             <div className="min-w-0">
-              <div className="rounded-[2rem] border border-linen-300 bg-white/74 p-4 shadow-[0_28px_70px_rgba(32,51,49,0.08)] md:p-5">
+              <div className="rounded-[.5rem] border border-linen-300 bg-white/74 p-4 shadow-[0_28px_70px_rgba(32,51,49,0.08)] md:p-5">
               <p className="eyebrow text-teal-600 text-[15px] font-bold w-full mb-4">Integrantes</p>
 
               <div
@@ -157,7 +154,7 @@ export default function Home() {
                       key={m.id}
                       m={m}
                       delay={0.16 + i * 0.08}
-                      className="min-w-[15rem] flex-1 lg:min-w-0"
+                      className="min-w-[15rem] flex-1 lg:min-w-0 hover:min-w-[25rem] transition-all duration-500 ease-out"
                     />
                   ))}
                 </div>
@@ -203,7 +200,7 @@ export default function Home() {
       {/* ════════════════════════════════════
           TRABALHOS EM DESTAQUE
           ════════════════════════════════════ */}
-      <section className="section-band-soft py-24 section-divider-top">
+      <section className="section-band-soft py-24 section-divider-top bg-dark!">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
 
           {/* Header */}
