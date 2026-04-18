@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { trabalhos, membros, stats } from '../data/content';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import { HiArrowRight } from 'react-icons/hi';
 
 const rev = {
   hidden: { opacity: 0, y: 32 },
@@ -65,16 +67,13 @@ function HeroPortraitWindow({ m, className = '', delay = 0 }) {
   );
 }
 
+
 export default function Home() {
   const destaques = trabalhos.filter(t => t.destaque).slice(0, 3);
   const heroMembros = membros.slice(0, 5);
 
   return (
     <div className="bg-bg">
-
-      {/* ════════════════════════════════════
-          HERO — leve, confortável, com fotos quadradas arredondadas
-          ════════════════════════════════════ */}
       <section className="relative -mt-16 overflow-hidden bg-linen-50 pt-24 md:pt-28">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-linen-50 to-bg" />
@@ -91,76 +90,65 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 pb-14 md:px-10 md:pb-20">
-          <div className="grid items-start gap-12 border-b border-stone-300/80 pb-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
+          <div className="grid items-start gap-12  pb-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
             <div className="min-w-0">
               <motion.div custom={0} variants={rev} initial="hidden" animate="show"
-                className="mb-7 flex items-center gap-4">
+                className="mb-4 flex items-center gap-4">
                 <div className="h-px w-10 bg-teal-300" />
-                <span className="eyebrow text-teal-600">[Turma · Semestre · Unicamp Limeira]</span>
+                <span className="eyebrow text-teal-600 text-[11px]">[Nutri 2025 · 3 Semestre · Unicamp Limeira]</span>
+                <div className="h-px w-10 bg-teal-300" />
               </motion.div>
 
-              <div className="mb-2 overflow-hidden">
-                <motion.h1
-                  initial={{ y: 80, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                  className="font-display font-semibold leading-[0.94] text-dark"
-                  style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
-                >
-                  [Nome do
-                </motion.h1>
-              </div>
-              <div className="mb-7 overflow-hidden">
-                <motion.h1
-                  initial={{ y: 80, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-                  className="font-display font-light italic leading-[0.94] text-slate-500"
-                  style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
-                >
-                  Grupo]
-                </motion.h1>
+              <div className="flex gap-4">
+                <div className="mb-2 overflow-hidden">
+                    <motion.h1
+                    initial={{ y: -80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    className="eyebrow text-[60px]! font-semibold tracking-wide text-dark"
+                    style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
+                    >
+                    Nome
+                    </motion.h1>
+                </div>
+                <div className="overflow-hidden">
+                    <motion.h1
+                    initial={{ y: 80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
+                    className="eyebrow text-[60px]! font-semibold tracking-wide text-slate-500"
+                    style={{ fontSize: 'clamp(38px, 6vw, 74px)' }}
+                    >
+                    Grupo
+                    </motion.h1>
+                </div>
               </div>
 
               <motion.div custom={3} variants={rev} initial="hidden" animate="show"
-                className="flex flex-col items-start gap-7">
-                <p className="max-w-[500px] text-[14px] leading-8 text-dark/58">
-                  [Breve descrição — quem são, qual disciplina/semestre e o que este site apresenta ao visitante.]
+                className="flex flex-col items-start gap-10">
+                <p className="max-w-[500px] text-[14px] leading-auto text-dark/58">
+                    Somos alunos da turma 024 de Nutrição da Unicamp – FCA, atualmente cursando a disciplina de Técnica e Dietética. Este espaço foi criado para apresentar os trabalhos desenvolvidos ao longo das atividades teóricas e práticas da disciplina. <br/><br/>
+
+                    Aqui, você encontrará conteúdos sobre ficha técnica de preparações, grupos alimentares — com foco em leguminosas, carnes e pescados — além de estudos sobre elaboração de cardápios e segurança dos alimentos.<br/><br/>
+
+                    Comece conhecendo um pouco mais sobre o nosso grupo e, em seguida, explore os temas que organizamos ao longo do curso.
                 </p>
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link to="/trabalhos" className="btn-cta">
-                    Ver trabalhos ↗
+                <div className="flex flex-wrap items-center gap-6">
+                  <Link to="/trabalhos" className="btn-cta group">
+                    Ver trabalhos <HiArrowUpRight className="text-sm text-linen-600 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
-                  <Link to="/sobre" className="eyebrow text-dark/42 transition-colors hover:text-dark">
-                    Sobre →
+                  <Link to="/sobre" className="eyebrow flex items-center gap-1 text-[12px] font-semibold text-dark/70 transition-colors hover:text-dark group">
+                    Sobre <HiArrowRight className="text-sm text-dark/42 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-dark" />
                   </Link>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {stats.slice(0, 3).map((s) => (
-                    <div key={s.label} className="rounded-2xl border border-linen-300 bg-white/72 px-4 py-4">
-                      <div className="font-display text-[28px] leading-none text-dark">{s.valor}</div>
-                      <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-stone-500">{s.label}</div>
-                    </div>
-                  ))}
                 </div>
               </motion.div>
             </div>
 
             <div className="min-w-0">
               <div className="rounded-[2rem] border border-linen-300 bg-white/74 p-4 shadow-[0_28px_70px_rgba(32,51,49,0.08)] md:p-5">
-                <div className="mb-4 flex items-end justify-between gap-4">
-                  <div>
-                    <p className="eyebrow text-teal-600">Integrantes</p>
-                    <p className="mt-2 max-w-md text-[13px] leading-6 text-dark/56">
-                      Uma faixa editorial com retratos individuais, em janelas verticais, para apresentar a equipe com mais presença.
-                    </p>
-                  </div>
-                  <Link to="/membros" className="hidden shrink-0 eyebrow text-teal-600 transition-colors hover:text-teal-700 md:block">
-                    Ver equipe ↗
-                  </Link>
-                </div>
+              <p className="eyebrow text-teal-600 text-[15px] font-bold w-full mb-4">Integrantes</p>
 
-                <div
+              <div
                   aria-label="Fotos dos integrantes do grupo"
                   className="flex items-stretch gap-3 overflow-x-auto pb-1 scrollbar-hide lg:min-h-[29rem]"
                 >
@@ -174,12 +162,19 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-4 flex items-center justify-between rounded-[1.4rem] border border-linen-300 bg-linen-100/72 px-4 py-3">
-                  <p className="text-[13px] leading-relaxed text-dark/56">
-                    Conheça os integrantes, os projetos e o processo por trás da produção acadêmica do grupo.
-                  </p>
-                  <Link to="/membros" className="shrink-0 pl-4 eyebrow text-teal-600 transition-colors hover:text-teal-700 md:hidden">
-                    Ver equipe ↗
+                <div className="mt-4 flex flex-col justify-center gap-4">
+                    <Link
+                        to="/membros"
+                        className="relative hidden md:flex items-center gap-1 justify-center text-[14px] text-teal-600 transition-colors duration-300 hover:text-teal-700 group w-fit self-end"
+                        >
+                        Ver equipe <HiArrowUpRight className="text-sm text-linen-600 transition-transform duration-300 group-hover:translate-x-1" />
+                        <span className="absolute left-0 -bottom-0.5 h-[1px] w-0 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
+                    </Link>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between rounded-[1.4rem] border border-linen-300 bg-linen-100/72 px-4 py-3 md:hidden">
+                  <Link to="/membros" className="shrink-0 pl-4 eyebrow text-teal-600 transition-colors hover:text-teal-700">
+                    Ver equipe <HiArrowUpRight className="text-sm text-linen-600 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -188,9 +183,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════
-          STATS — faixa sobre fundo claro
-          ════════════════════════════════════ */}
       <section className="section-band section-divider-top">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-stone-300">
@@ -198,10 +190,10 @@ export default function Home() {
               <motion.div key={s.label}
                 custom={i} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
                 className="py-10 px-8 text-center first:pl-0 last:pr-0">
-                <div className="font-display text-[52px] font-light text-dark leading-none mb-2">
+                <div className="font-display text-[52px] font-bold text-dark leading-none mb-2">
                   {s.valor}
                 </div>
-                <div className="eyebrow text-stone-500">{s.label}</div>
+                <div className="eyebrow text-stone-500 text-[12px] font-semibold">{s.label}</div>
               </motion.div>
             ))}
           </div>

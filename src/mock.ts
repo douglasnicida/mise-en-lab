@@ -131,8 +131,8 @@ export const membros = [
   // ESTATÍSTICAS — SOBRE / HOME
   // ==========================================
   export const stats = [
-    { valor: '[N]', label: 'Membros' },
-    { valor: '[N]', label: 'Trabalhos Publicados' },
-    { valor: '[N]', label: 'Semestres Ativos' },
-    { valor: '[N]', label: 'Disciplinas' },
+    { valor: '4', label: 'Membros' },
+    { valor: '2', label: 'Trabalhos Publicados' },
+    { valor: '3', label: 'Semestres Ativos' },
+    { valor: '8', label: 'Disciplinas' },
   ];
