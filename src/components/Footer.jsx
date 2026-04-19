@@ -1,3 +1,4 @@
+import { GiWatermelon } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -9,10 +10,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-white/15 bg-white/5">
-                <span className="font-display text-[15px] font-semibold leading-none text-linen-50">N</span>
+                <GiWatermelon className="size-7" />
               </div>
-              <span className="font-display font-semibold text-linen-50 text-lg tracking-tight">
-                NutriGrupo
+              <span className="font-pally font-semibold text-linen-50 text-xl tracking-tight">
+                Mise En Lab
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed">
@@ -22,16 +23,16 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="eyebrow text-stone-500 mb-4 tracking-[0.2em]">
+            <h3 className="eyebrow text-[13px] text-stone-500 mb-4 tracking-[0.2em]">
               Navegação
             </h3>
             <ul className="space-y-2">
               {[
                 { to: '/', label: 'Início' },
+                { to: '/ficha-tecnica', label: 'Ficha Técnica' },
                 { to: '/sobre', label: 'Sobre' },
                 { to: '/trabalhos', label: 'Trabalhos' },
                 { to: '/membros', label: 'Membros' },
-                { to: '/contato', label: 'Contato' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
@@ -47,22 +48,15 @@ export default function Footer() {
 
           {/* Contato */}
           <div>
-            <h3 className="eyebrow text-stone-500 mb-4 tracking-[0.2em]">
+            <h3 className="eyebrow text-[13px] text-stone-500 mb-4 tracking-[0.2em]">
               Contato
             </h3>
             <ul className="space-y-2 text-sm text-stone-400">
-              <li>📧 [email.do.grupo@dac.unicamp.br]</li>
-              <li>🏫 Unicamp — Limeira, SP</li>
-              <li>📅 [Ano letivo / Semestre]</li>
+              <li className="flex items-center gap-2"><span>📧</span> [email.do.grupo@dac.unicamp.br]</li>
+              <li className="flex items-center gap-2"><span>🏫</span>Unicamp — Limeira, SP</li>
+              <li className="flex items-center gap-2"><span>📅</span> [Ano letivo / Semestre]</li>
             </ul>
           </div>
-        </div>
-
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
-          <p>© [Ano] [Nome do Grupo] — Nutrição Unicamp Limeira</p>
-          <p className="text-stone-500">
-            Feito com <span className="text-teal-500/80">🌿</span> para a turma de Nutrição
-          </p>
         </div>
       </div>
     </footer>

@@ -22,7 +22,7 @@ export default function Trabalhos() {
   const filtered = cat === 'Todos' ? trabalhos : trabalhos.filter(t => t.categoria === cat);
 
   return (
-    <div className="bg-bg">
+    <div className="bg-bg font-handwritten">
 
       {/* ══════════════════
           HERO

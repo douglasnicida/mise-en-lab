@@ -52,7 +52,7 @@
   }
   .eyebrow {
     font-family: 'DM Mono', monospace;
-    @apply text-[10px] tracking-[0.22em] uppercase;
+    @apply text-[12px] tracking-[0.22em] uppercase;
   }
   .tag-sm {
     font-family: 'DM Mono', monospace;
@@ -97,7 +97,7 @@
       linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 253, 252, 0.96));
   }
   .section-band-soft {
-    @apply relative overflow-hidden bg-surface/85;
+    @apply relative overflow-hidden bg-linen-50;
   }
   .section-band-soft::before {
     content: "";
