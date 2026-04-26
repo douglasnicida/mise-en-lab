@@ -5,6 +5,8 @@
  * Cada objeto representa um item que aparece no site.
  */
 
+export const PROJECT_NAME = 'Mise En Lab';
+
 // ==========================================
 // MEMBROS DO GRUPO
 // Substitua com os dados reais de cada integrante

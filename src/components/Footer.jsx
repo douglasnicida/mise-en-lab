@@ -1,5 +1,6 @@
 import { GiWatermelon } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { PROJECT_NAME } from '../mock';
 
 export default function Footer() {
   return (
@@ -13,7 +14,7 @@ export default function Footer() {
                 <GiWatermelon className="size-7" />
               </div>
               <span className="font-pally font-semibold text-linen-50 text-xl tracking-tight">
-                Mise En Lab
+                {PROJECT_NAME}
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed">
