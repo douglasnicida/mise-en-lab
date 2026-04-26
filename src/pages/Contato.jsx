@@ -53,12 +53,12 @@ const termos = [
     definicao: 'Quantidade de cada alimento expressa em utensílios domésticos.',
     exemplo: '½ xícara de chá, 1 colher de sopa.',
   },
-  {
-    sigla: 'PC',
-    nome: 'Per Capita',
-    definicao: 'Quantidade de alimento destinada a cada comensal, expressa em peso bruto.',
-    exemplo: null,
-  },
+  // {
+  //   sigla: 'PC',
+  //   nome: 'Per Capita',
+  //   definicao: 'Quantidade de alimento destinada a cada comensal, expressa em peso bruto.',
+  //   exemplo: null,
+  // },
 ];
 
 const outrosTermos = [
@@ -252,11 +252,11 @@ export default function FichaTecnica() {
                 {[
                   { val: 'FC', label: 'Fator de Correção' },
                   { val: 'IC', label: 'Índice de Cozimento' },
-                  { val: 'PC', label: 'Per Capita' },
+                  { val: 'IH', label: 'Índice de Hidratação' },
                 ].map((s, i) => (
-                  <div key={i} className="bg-dark/10 px-5 py-6 text-center">
-                    <p className="font-pally text-[2rem] font-bold text-teal-600 leading-none mb-1">{s.val}</p>
-                    <p className="font-mono text-[13px] tracking-widest uppercase text-dark/80">{s.label}</p>
+                  <div key={i} className="bg-dark/10 px-4 py-6 text-center flex flex-col">
+                    <p className="font-pally text-[2rem] font-bold text-teal-600 leading-none mb-1 flex-1">{s.val}</p>
+                    <p className="font-mono text-[13px] tracking-widest uppercase text-dark/80 flex justify-center items-center flex-1">{s.label}</p>
                   </div>
                 ))}
               </div>
