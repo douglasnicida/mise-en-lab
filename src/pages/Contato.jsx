@@ -4,6 +4,10 @@ import { HiArrowUpRight, HiArrowLongRight } from 'react-icons/hi2';
 import { FaClipboardList } from 'react-icons/fa';
 import { BsDot } from 'react-icons/bs';
 
+import Ficha from '../assets/images/Ficha_Tecnica_Feijoada_Vegana.1.jpeg'
+import FichaIngredientes from '../assets/images/Ficha_Tecnica_Feijoada_Vegana.2.jpeg'
+
+
 /* ─── animation ─────────────────────────────────────────── */
 const ease = [0.16, 1, 0.3, 1];
 
@@ -76,33 +80,27 @@ const outrosTermos = [
 const gruposNOVA = [
   {
     num: '1',
-    titulo: 'Alimentos in natura',
-    desc: 'Alimento sem sofrer nenhum tipo de processamento.',
+    titulo: 'In natura/Minimamente processados',
+    desc: 'De acordo com o guia, eles devem ser a base da receita e da alimentação. Os alimentos In Natura são aqueles obtidos diretamente de plantas ou animais, sem alteração e os minimamente processados são alimentos que passaram por processos simples como limpeza, remoção de partes não comestíveis, secagem, moagem ou pasteurização.',
     cor: 'teal',
   },
   {
     num: '2',
-    titulo: 'Minimamente processados',
-    desc: 'Alimento após sofrer algum processamento como corte ou empacotamento.',
-    cor: 'teal',
+    titulo: 'Alimentos Processados',
+    desc: 'Devem ser limitados na ficha, priorizando os in natura. São produtos fabricados pela indústria com a adição de sal, açúcar ou outra substância de uso culinário a alimentos in natura. O objetivo é aumentar a durabilidade e tornar o alimento mais palatável.',
+    cor: 'stone',
   },
   {
     num: '3',
-    titulo: 'Ingredientes culinários',
-    desc: 'Utilizados para auxiliar na preparação de receitas e melhorar o sabor da preparação.',
-    cor: 'stone',
+    titulo: 'Alimentos Ultraprocessados',
+    desc: 'São formulações industriais feitas inteiramente ou majoritariamente de substâncias extraídas de alimentos (óleos, gorduras, açúcar, proteínas isoladas) e aditivos (corantes, aromatizantes, realçadores de sabor). Possuem pouco ou nenhum alimento inteiro na composição.',
+    cor: 'slate',
   },
   {
     num: '4',
-    titulo: 'Alimentos processados',
-    desc: 'Alimento em que houve a adição de ingredientes culinários.',
+    titulo: 'Ingredientes culinários',
+    desc: 'Sal, óleos e gorduras, que são utilizados em quantidades mínimas para temperar e cozinhar.',
     cor: 'stone',
-  },
-  {
-    num: '5',
-    titulo: 'Alimentos ultraprocessados',
-    desc: 'Alimento em que há a adição de aditivos e conservantes.',
-    cor: 'slate',
   },
 ];
 
@@ -174,7 +172,7 @@ function NovaCard({ g, i }) {
         <p className="font-pally text-[1.1rem] font-normal text-dark mb-1.5 leading-snug">
           {g.titulo}
         </p>
-        <p className="font-inter text-[13px] text-dark/50 leading-relaxed">{g.desc}</p>
+        <p className="font-inter text-[13px] text-dark/50 leading-relaxed text-justify">{g.desc}</p>
       </div>
     </motion.div>
   );
@@ -236,16 +234,14 @@ export default function FichaTecnica() {
               className="lg:col-span-7 space-y-5"
             >
               <p className="text-[15px] text-dark/60 leading-[1.85] text-justify">
-                A ficha técnica é um instrumento de <strong className="text-dark/80 font-semibold">padronização da produção</strong> de
-                receitas em quantidades exatas. Deve conter informações claras e objetivas, orientando o
-                modo de preparo, custos, desperdícios, per capita, rendimento, fator de correção e cocção.
+                A <strong className="text-dark/75 font-semibold">Ficha Técnica Padronizada (FTP)</strong> é uma ferramenta fundamental nos serviços de alimentação que ajuda a organizar, padronizar e controlar a produção. Ela não é apenas um documento técnico, é uma ferramenta de gestão que une teoria e prática com o objetivo de aprimorar o controle de qualidade, a segurança alimentar (com o registro do valor nutricional de cada alimento utilizado) e a redução de desperdícios devido a melhor administração dos recursos disponíveis e cálculo do custo de produção da preparação.
               </p>
-              <p className="text-[15px] text-dark/55 leading-[1.85] text-justify">
+              {/* <p className="text-[15px] text-dark/55 leading-[1.85] text-justify">
                 Sua utilização contribui para <strong className="text-dark/75 font-semibold">prevenir desperdícios</strong> na unidade
                 de alimentação e otimizar aproveitamento e investimentos financeiros em todas as etapas
                 da preparação — resultando em ganhos de produtividade e qualidade em uma Unidade de
                 Alimentação e Nutrição (UAN).
-              </p>
+              </p> */}
 
               {/* quick stats */}
               <div className="mt-8 grid grid-cols-3 gap-px bg-stone-200/80 rounded-xl overflow-hidden">
@@ -262,8 +258,20 @@ export default function FichaTecnica() {
               </div>
             </motion.div>
           </div>
+
+          <p className="text-[15px] text-dark/60 leading-[1.85] text-justify mt-12">
+          <span className="font-semibold text-dark/75">Quando a sua utilização é necessária?</span><br/>
+Na prática, a FTP é amplamente utilizada em unidades de alimentação como restaurantes, escolas, hospitais e cozinhas industriais; ou sempre que houver necessidade de padronizar uma receita. Um fator que exemplifica a sua importância é a organização dos funcionários nas unidades de alimentação, que ocorre em turnos diferentes, ou seja, pessoas com o mesmo cargo e executando as mesmas atividades, o que poderia acarretar em variabilidades no processo, desperdícios e perda de produtividade caso não houvesse o uso da ficha técnica.
+
+<br /><br />
+          <span className="font-semibold text-dark/75">O que é preciso para montar uma FTP?</span><br/>
+Para elaborar uma FTP, é preciso reunir informações técnicas da preparação, como ingredientes, quantidades, rendimento, peso bruto e peso líquido, fatores de correção, índice de cocção, modo de preparo, custo por porção e valor nutricional. Esses dados permitem que a receita seja reproduzida de forma padronizada, mantendo a qualidade e evitando variações no resultado final.
+
+          </p>
         </div>
       </section>
+
+      
 
       {/* ══════════════════════════════════════
           TERMOS — card grid
@@ -361,8 +369,7 @@ export default function FichaTecnica() {
                 className="font-inter text-[15px] text-justify text-dark/55 leading-[1.85] mb-8"
               >
                 Os alimentos são classificados a partir do <strong className="text-dark/75 font-semibold">Guia Alimentar para
-                a População Brasileira</strong>, que define as diretrizes oficiais sobre alimentação
-                saudável — orientando escolha, combinação, preparo e consumo de alimentos.
+                a População Brasileira</strong>, divididos em <strong>4</strong> categorias.
               </motion.p>
 
               <motion.a
@@ -374,6 +381,39 @@ export default function FichaTecnica() {
                 Acessar o Guia Alimentar
                 <HiArrowUpRight className="text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.a>
+
+                <motion.div custom={0} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Regionalidade</h4>
+                  <p>A regionalidade no guia alimentar e na ficha técnica valorizam a cultura alimentar local e a sustentabilidade, como por exemplo a sazonalidade (priorização de ingredientes da época); a identidade cultural, onde deve se registrar se a preparação é típica de alguma região; o acesso e origem, considerando‑se os ingredientes que são facilmente encontrados na sua região.</p>
+                </motion.div>
+                <motion.div custom={1} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Custo da Receita</h4>
+                  <p>O custo é o fator de viabilidade da FTP. No contexto do GAPB, o que se busca é o equilíbrio entre saúde e economia.</p>
+                </motion.div>
+                <motion.div custom={2} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Custo Unitário e Total</h4>
+                  <p>É calculado o custo de cada ingrediente com base no Peso Bruto (PB) utilizado.</p>
+                </motion.div>
+                <motion.div custom={3} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Aproveitamento Integral</h4>
+                  <p>Para reduzir o custo e o desperdício, a FTP pode incluir o uso de cascas, talos e sementes (alinhado com o consumo consciente).</p>
+                </motion.div>
+                <motion.div custom={4} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Custo por Porção</h4>
+                  <p>É calculado o valor final de cada preparo. Alimentos in natura, quando comprados na safra e de produtores locais costumam ter um custo‑benefício muito superior aos processados.</p>
+                </motion.div>
+                <motion.div custom={5} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Acesso aos Ingredientes</h4>
+                  <p>Disponibilidade nos comércios locais, facilidade de substituição e dependência da época de colheita permitem adaptar receitas para diferentes rendas.</p>
+                </motion.div>
+                <motion.div custom={6} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Destinação da Preparação</h4>
+                  <p>As receitas podem atender a diversos públicos: alimentação escolar, dietas específicas (hipertensão, diabetes), público geral, crianças, idosos e atletas.</p>
+                </motion.div>
+                <motion.div custom={7} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-inter text-[13px] text-dark/70 leading-relaxed mb-6">
+                  <h4 className="font-pally text-[1rem] font-semibold text-dark mb-2">Possibilidade de Adaptação</h4>
+                  <p>Substituição de ingredientes caros por opções locais, redução de sal, açúcar e gordura, troca de ultraprocessados por alimentos in natura e adaptações para restrições alimentares (sem lactose, sem glúten).</p>
+                </motion.div>
             </div>
 
             {/* right — NOVA classification timeline */}
@@ -417,7 +457,7 @@ export default function FichaTecnica() {
             </div>
           </div>
 
-          {/* example card — Estrogonofe Vegetariano */}
+          {/* example card — Feijoada Vegana */}
           <motion.div
             custom={2} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
             className="rounded-2xl border border-linen-300 bg-white overflow-hidden shadow-[0_8px_40px_rgba(32,51,49,0.06)]"
@@ -425,10 +465,10 @@ export default function FichaTecnica() {
             <div className="flex items-center justify-between px-8 py-6 border-b border-linen-300">
               <div>
                 <p className="font-mono text-[9px] tracking-widest uppercase text-dark/25 mb-1">
-                  Aula de Leite e Ovos
+                  Aula Leguminosas
                 </p>
                 <h3 className="font-display text-[1.4rem] font-semibold text-dark">
-                  Estrogonofe Vegetariano
+                  Feijoada Vegana
                 </h3>
               </div>
               <span className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.16em] uppercase text-teal-600">
@@ -440,22 +480,13 @@ export default function FichaTecnica() {
             {/* placeholder for actual ficha image */}
             <div className="px-8 py-10 text-center bg-linen-50/60">
               <p className="font-mono text-[10px] tracking-widest uppercase text-dark/20 mb-4">
-                Imagem da ficha técnica completa
+                {/* Imagem da ficha técnica completa */}
+                <img src={Ficha} alt="" className="" />
+                <img src={FichaIngredientes} alt="" className="" />
               </p>
-              <div className="mx-auto max-w-2xl aspect-[4/3] rounded-xl border border-dashed border-stone-300 flex items-center justify-center bg-white/60">
-                <p className="text-[12px] text-dark/25 font-mono">
-                  [ Inserir imagem da ficha técnica aqui ]
-                </p>
-              </div>
-            </div>
-
-            {/* NOVA classification note */}
-            <div className="px-8 py-6 border-t border-linen-300 bg-surface/40">
-              <p className="text-[12.5px] text-dark/45 leading-relaxed">
-                <strong className="text-dark/60 font-semibold">Classificação NOVA</strong> dos ingredientes
-                utilizados na preparação do Estrogonofe Vegetariano, realizada a partir do Guia Alimentar
-                para a População Brasileira.
-              </p>
+              {/* <div className="mx-auto max-w-2xl aspect-4/3 rounded-xl border border-dashed border-stone-300 flex items-center justify-center bg-white/60">
+                
+              </div> */}
             </div>
           </motion.div>
         </div>

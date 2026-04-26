@@ -6,7 +6,7 @@ import { GiPineapple, GiWatermelon } from 'react-icons/gi';
 const links = [
   { to: '/', label: 'Início' },
   { to: '/ficha-tecnica', label: 'Ficha Técnica' },
-  { to: '/sobre', label: 'Sobre' },
+  { to: '/grupos-alimentos', label: 'Grupos de Alimentos' },
   { to: '/trabalhos', label: 'Trabalhos' },
   { to: '/membros', label: 'Membros' },
 ];

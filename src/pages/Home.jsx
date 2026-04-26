@@ -124,18 +124,14 @@ export default function Home() {
               <motion.div custom={3} variants={rev} initial="hidden" animate="show"
                 className="flex flex-col items-start justify-between flex-1">
                 <p className="max-w-[500px] text-[14px] leading-auto text-dark/58">
-                    Somos alunos da turma 024 de Nutrição da Unicamp – FCA, atualmente cursando a disciplina de Técnica e Dietética. Este espaço foi criado para apresentar os trabalhos desenvolvidos ao longo das atividades teóricas e práticas da disciplina. <br/><br/>
-
-                    Aqui, você encontrará conteúdos sobre ficha técnica de preparações, grupos alimentares — com foco em leguminosas, carnes e pescados — além de estudos sobre elaboração de cardápios e segurança dos alimentos.<br/><br/>
-
-                    Comece conhecendo um pouco mais sobre o nosso grupo e, em seguida, explore os temas que organizamos ao longo do curso.
+                    (Apresentação do Grupo)
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
                   <Link to="/trabalhos" className="btn-cta group">
                     Ver trabalhos <HiArrowUpRight className="text-sm text-linen-600 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                   <Link to="/sobre" className="eyebrow flex items-center gap-1 text-[12px] font-semibold text-dark/70 transition-colors hover:text-dark group">
-                    Sobre <HiArrowRight className="text-sm text-dark/42 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-dark" />
+                    Grupos de alimentos <HiArrowRight className="text-sm text-dark/42 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-dark" />
                   </Link>
                 </div>
               </motion.div>
@@ -277,9 +273,9 @@ export default function Home() {
             <em className="font-light text-teal-400">sobre os projetos?]</em>
           </h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Link to="/contato" className="btn-cta-dark">
+            {/* <Link to="/contato" className="btn-cta-dark">
               Entrar em contato ↗
-            </Link>
+            </Link> */}
             <Link to="/trabalhos" className="eyebrow text-stone-300/40 hover:text-stone-300 transition-colors">
               Ver trabalhos →
             </Link>

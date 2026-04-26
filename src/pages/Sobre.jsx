@@ -38,63 +38,53 @@ export default function Sobre() {
           <div className="absolute left-0 bottom-0 w-[420px] h-[420px] rounded-full bg-slate-100/80 blur-[130px]" />
         </div>
         <div className="page-hero-shell">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
-            className="page-hero-kicker">
-            <div className="page-hero-rule" />
-            <span className="eyebrow text-teal-600">Sobre o grupo</span>
-          </motion.div>
 
-          <div className="overflow-hidden mb-1">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="page-hero-title font-semibold">
-              {/* SOBRE HERO: Título linha 1 */}
-              Quem somos
-            </motion.h1>
-          </div>
-          <div className="overflow-hidden mb-7">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-              className="page-hero-accent">
-              {/* SOBRE HERO: Título linha 2 — em itálico */}
-              nós?
-            </motion.h1>
-          </div>
-
-          <motion.p custom={3} variants={rev} initial="hidden" animate="show"
-            className="page-hero-copy">
-            {/* SOBRE HERO: Introdução */}
-            [Texto introdutório — quem são, qual semestre, disciplina, motivação para criar o site.]
-          </motion.p>
+          <div className="lg:col-span-5">
+              <motion.div custom={0} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
+                className="flex items-center gap-3 mb-6">
+                <div className="h-px w-8 bg-teal-400" />
+                <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal-600">
+                  Dentre os grupos de alimentos...
+                </span>
+              </motion.div>
+              <motion.h2
+                custom={1} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
+                className="font-pally font-semibold text-dark leading-[0.95] mb-0"
+                style={{ fontSize: 'clamp(30px, 4vw, 52px)' }}
+              >
+                Leguminosas<br />
+                <span className="font-light text-stone-500/60">e Carnes</span>
+              </motion.h2>
+            </div>
         </div>
       </section>
 
       {/* ══════════════════════════
           HISTÓRIA — grid com cards info
           ══════════════════════════ */}
-      <section className="section-band py-24">
-        <div className="section-inner max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      {/* <section className="section-band py-24"> */}
+        {/* <div className="section-inner max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"> */}
 
           {/* Texto principal */}
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+          {/* <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7 }}
             className="lg:col-span-6">
             <p className="eyebrow text-stone-500 mb-6">Nossa história</p>
             <h2 className="font-display font-semibold text-dark leading-tight mb-8"
               style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
-              {/* HISTÓRIA: Título */}
+              
               [Como tudo<br /><em className="font-light text-stone-500">começou]</em>
             </h2>
             <div className="space-y-5 text-[13px] text-dark/55 leading-[1.85]">
-              {/* HISTÓRIA: 3 parágrafos */}
+      
               <p>[Parágrafo 1 — contexto: qual disciplina, professor/a, semestre, campus.]</p>
               <p>[Parágrafo 2 — motivação: por que criaram este site, o que querem comunicar.]</p>
               <p>[Parágrafo 3 — aspirações: o que esperam alcançar com as publicações.]</p>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Info cards */}
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
+          {/* <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7 }}
             className="lg:col-span-5 lg:col-start-8 grid grid-cols-2 gap-px bg-linen-300">
             {[
@@ -109,14 +99,14 @@ export default function Sobre() {
                 <p className="eyebrow text-[9px] text-stone-500">{c.s}</p>
               </div>
             ))}
-          </motion.div>
-        </div>
-      </section>
+          </motion.div> */}
+        {/* </div> */}
+      {/* </section> */}
 
       {/* ══════════════════════════
           STATS
           ══════════════════════════ */}
-      <section className="section-band-dark border-y border-white/8">
+      {/* <section className="section-band-dark border-y border-white/8">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/8">
             {stats.map((s, i) => (
@@ -131,12 +121,12 @@ export default function Sobre() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════
           VALORES — lista com linhas
           ══════════════════════════ */}
-      <section className="section-band-soft py-24">
+      {/* <section className="section-band-soft py-24">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-end justify-between mb-12 pb-6 border-b border-linen-300">
             <div>
@@ -164,7 +154,7 @@ export default function Sobre() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════
           TIMELINE
