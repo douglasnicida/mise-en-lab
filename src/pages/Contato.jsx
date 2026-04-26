@@ -167,7 +167,7 @@ function NovaCard({ g, i }) {
           {g.num}
         </span>
         {i < gruposNOVA.length - 1 && (
-          <div className="mt-2 w-[2px] flex-1 min-h-8 bg-teal-200" />
+          <div className="mt-2 w-[2px] flex-1 min-h-12 bg-teal-200" />
         )}
       </div>
 
@@ -366,19 +366,6 @@ export default function FichaTecnica() {
                 Acessar o Guia Alimentar
                 <HiArrowUpRight className="text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.a>
-
-              <div className="space-y-5">
-                {novaSubtopics.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    custom={i} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
-                    className="font-inter text-[13px] text-dark/70 leading-relaxed"
-                  >
-                    <h4 className="font-pally text-[1rem] font-semibold text-dark mb-1">{item.title}</h4>
-                    <p>{item.text}</p>
-                  </motion.div>
-                ))}
-              </div>
             </div>
 
             {/* right — NOVA classification timeline */}
@@ -396,6 +383,18 @@ export default function FichaTecnica() {
               </motion.div>
             </div>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                {novaSubtopics.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    custom={i} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
+                    className="p-6 bg-white rounded-xl shadow-sm border border-linen-200 hover:shadow-md transition-shadow"
+                  >
+                    <h4 className="font-pally text-[1rem] font-semibold text-teal-600 mb-2">{item.title}</h4>
+                    <p className="font-inter text-[13px] text-dark/70 leading-relaxed text-justify">{item.text}</p>
+                  </motion.div>
+                ))}
+              </div>
         </div>
       </section>
 
