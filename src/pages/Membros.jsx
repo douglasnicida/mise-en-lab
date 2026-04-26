@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { membros } from '../data/content';
+import SectionHeader from '../components/SectionHeader';
 
 const rev = {
   hidden: { opacity: 0, y: 24 },
@@ -22,30 +23,16 @@ export default function Membros() {
           <div className="absolute right-0 bottom-0 w-[480px] h-[480px] rounded-full bg-slate-100/75 blur-[130px]" />
         </div>
         <div className="page-hero-shell">
-          <div className="page-hero-kicker">
-            <div className="page-hero-rule" />
-            <span className="eyebrow text-teal-600">Equipe</span>
-          </div>
-          <div className="overflow-hidden mb-1">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="page-hero-title font-semibold">
-              Nossos
-            </motion.h1>
-          </div>
-          <div className="overflow-hidden mb-7">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-              className="page-hero-accent">
-              Membros
-            </motion.h1>
-          </div>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            <SectionHeader
+            label="Equipe"
+            title="Nossos"
+            subtitle="Membros"
+          />
+          {/* <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
             className="page-hero-copy">
-            {/* MEMBROS HERO: Descrição da equipe */}
             [Breve descrição — quantas pessoas, o que têm em comum, o que as une no grupo.]
-          </motion.p>
+          </motion.p> */}
         </div>
       </section>
 

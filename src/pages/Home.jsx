@@ -141,19 +141,19 @@ export default function Home() {
               <div className="rounded-[.5rem] border border-linen-300 bg-white/74 p-4 shadow-[0_28px_70px_rgba(32,51,49,0.08)] md:p-5">
               <p className="eyebrow text-teal-600 text-[15px] font-bold w-full mb-4">Integrantes</p>
 
-              <div
-                  aria-label="Fotos dos integrantes do grupo"
-                  className="flex items-stretch gap-3 overflow-x-auto pb-1 scrollbar-hide lg:min-h-116"
-                >
-                  {heroMembros.slice(0, 4).map((m, i) => (
-                    <HeroPortraitWindow
-                      key={m.id}
-                      m={m}
-                      delay={0.16 + i * 0.08}
-                      className="min-w-60 flex-1 lg:min-w-0 hover:min-w-100 transition-all duration-500 ease-out"
-                    />
-                  ))}
-                </div>
+<div
+                    aria-label="Fotos dos integrantes do grupo"
+                    className="flex items-stretch gap-3 overflow-x-auto pb-1 scrollbar-hide lg:min-h-116"
+                  >
+                    {heroMembros.slice(0, 4).map((m, i) => (
+                      <HeroPortraitWindow
+                        key={m.id}
+                        m={m}
+                        delay={0.16 + i * 0.08}
+                        className="min-w-60 flex-1 lg:min-w-0 hover:min-w-100 transition-all duration-500 ease-out"
+                      />
+                    ))}
+                  </div>
 
                 <div className="mt-4 flex flex-col justify-center gap-4">
                     <Link

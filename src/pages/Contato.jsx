@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiArrowUpRight, HiArrowLongRight } from 'react-icons/hi2';
 import { FaClipboardList } from 'react-icons/fa';
 import { BsDot } from 'react-icons/bs';
+import SectionHeader from '../components/SectionHeader';
 
 import Ficha from '../assets/images/Ficha_Tecnica_Feijoada_Vegana.1.jpeg'
 import FichaIngredientes from '../assets/images/Ficha_Tecnica_Feijoada_Vegana.2.jpeg'
@@ -348,19 +349,11 @@ Para elaborar uma FTP, é preciso reunir informações técnicas da preparação
             <div className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start">
               <div className="mb-4 flex items-end justify-between">
                 <div>
-                  <motion.div custom={0} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
-                    className="flex items-center gap-3 mb-5">
-                    <div className="h-px w-8 bg-teal-400" />
-                    <span className="font-mono text-[13px] tracking-[0.2em] uppercase text-teal-600">Guia Alimentar Brasileiro</span>
-                  </motion.div>
-                  <motion.h2
-                    custom={1} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
-                    className="font-pally font-semibold text-dark leading-[0.92]"
-                    style={{ fontSize: 'clamp(30px, 4vw, 56px)' }}
-                  >
-                    Classificação<br />
-                    <span className="font-normal text-stone-400/70">dos alimentos</span>
-                  </motion.h2>
+<SectionHeader
+        label="Guia Alimentar Brasileiro"
+        title="Classificação"
+        subtitle="dos alimentos"
+      />
                 </div>
               </div>
 

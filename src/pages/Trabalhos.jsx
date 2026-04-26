@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trabalhos, categorias } from '../data/content';
+import SectionHeader from '../components/SectionHeader';
 
 const rev = {
   hidden: { opacity: 0, y: 24 },
@@ -33,30 +34,16 @@ export default function Trabalhos() {
           <div className="absolute top-0 right-0 w-[520px] h-[520px] rounded-full bg-teal-100/75 blur-[140px]" />
         </div>
         <div className="page-hero-shell">
-          <div className="page-hero-kicker">
-            <div className="page-hero-rule" />
-            <span className="eyebrow text-teal-600">Produções acadêmicas</span>
-          </div>
-          <div className="overflow-hidden mb-1">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="page-hero-title font-semibold">
-              Trabalhos
-            </motion.h1>
-          </div>
-          <div className="overflow-hidden mb-7">
-            <motion.h1 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-              className="page-hero-accent">
-              & Pesquisas
-            </motion.h1>
-          </div>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      <SectionHeader
+        label="Produções acadêmicas"
+        title="Trabalhos"
+        subtitle="& Pesquisas"
+      />
+          {/* <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
             className="page-hero-copy">
-            {/* TRABALHOS HERO: Descrição */}
             [Breve descrição do que o visitante encontrará — tipos de trabalho, período, disciplinas.]
-          </motion.p>
+          </motion.p> */}
         </div>
       </section>
 
