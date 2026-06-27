@@ -184,6 +184,7 @@ function NovaCard({ g, i }) {
 /* ─── Page ───────────────────────────────────────────────── */
 export default function FichaTecnica() {
   const [openRef, setOpenRef] = useState(false);
+  const [openImg, setOpenImg] = useState(null);
 
   return (
     <div className="bg-bg">
@@ -440,11 +441,30 @@ export default function FichaTecnica() {
               </span>
             </div>
 
-            {/* FIX: images now full-width and responsive */}
-            <div className="px-4 sm:px-8 py-6 sm:py-10 bg-linen-50/60 space-y-4">
-              <img src={Ficha} alt="Ficha Técnica Feijoada Vegana" className="w-full h-auto rounded-lg" />
-              <img src={FichaIngredientes} alt="Ingredientes Feijoada Vegana" className="w-full h-auto rounded-lg" />
+            {/* Images with click‑to‑expand */}
+            <div className="px-4 sm:px-8 py-6 sm:py-10 bg-linen-50/60 space-y-4 flex flex-col items-center gap-4">
+              <img
+                src={Ficha}
+                alt="Ficha Técnica Feijoada Vegana"
+                className="max-w-full h-auto rounded-lg cursor-pointer hover:opacity-90"
+                onClick={() => setOpenImg(Ficha)}
+              />
+              <img
+                src={FichaIngredientes}
+                alt="Ingredientes Feijoada Vegana"
+                className="max-w-full h-auto rounded-lg cursor-pointer hover:opacity-90"
+                onClick={() => setOpenImg(FichaIngredientes)}
+              />
             </div>
+            {/* Modal overlay for enlarged image */}
+            {openImg && (
+              <div
+                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+                onClick={() => setOpenImg(null)}
+              >
+                <img src={openImg} alt="Expanded" className="max-w-3xl max-h-[90vh] rounded" />
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

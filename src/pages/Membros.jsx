@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { membros } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
+import { useState } from 'react';
+
 
 const rev = {
   hidden: { opacity: 0, y: 24 },
@@ -11,6 +13,7 @@ const rev = {
 };
 
 export default function Membros() {
+  const [openMemberImg, setOpenMemberImg] = useState(null);
   return (
     <div className="bg-bg">
 

@@ -30,7 +30,7 @@ function HeroPortraitWindow({ m, className = '', delay = 0 }) {
     >
       <Link
         to="/membros"
-        className="group relative block h-full min-h-104 overflow-hidden rounded-[1.6rem] border border-linen-300 bg-white shadow-[0_18px_44px_rgba(32,51,49,0.08)] transition-all duration-500 ease-out hover:-translate-y-1 lg:hover:flex-[1.22]"
+        className="group relative block h-full min-h-80 overflow-hidden rounded-[1.6rem] border border-linen-300 bg-white shadow-[0_18px_44px_rgba(32,51,49,0.08)] transition-all duration-500 ease-out hover:-translate-y-1 lg:hover:flex-[1.22]"
       >
         <div className="absolute inset-0 overflow-hidden bg-surface">
           {m.avatar ? (
@@ -143,14 +143,14 @@ export default function Home() {
 
 <div
                     aria-label="Fotos dos integrantes do grupo"
-                    className="flex items-stretch gap-3 overflow-x-auto pb-1 scrollbar-hide lg:min-h-116"
+                    className="grid grid-cols-2 gap-3 lg:min-h-116"
                   >
                     {heroMembros.slice(0, 4).map((m, i) => (
                       <HeroPortraitWindow
                         key={m.id}
                         m={m}
                         delay={0.16 + i * 0.08}
-                        className="min-w-60 flex-1 lg:min-w-0 hover:min-w-100 transition-all duration-500 ease-out"
+                        className="hover:scale-105 transition-transform duration-300"
                       />
                     ))}
                   </div>
