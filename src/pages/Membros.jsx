@@ -97,9 +97,10 @@ export default function Membros() {
               {/* DOCENTE: Cargo / disciplina */}
               [Docente · NT402 - Técnica Dietética]
             </p>
-            <p className="text-[13px] text-linen-300/45 leading-relaxed max-w-[580px]">
+            <p className="text-[13px] text-linen-300/45 leading-relaxed max-w-[800px] text-justify">
               {/* DOCENTE: Mini bio / agradecimento */}
-              Nosso sincero agradecimento às professoras pela orientação cuidadosa, pela generosidade em compartilhar conhecimento e pelo olhar atento que transformou cada etapa da disciplina em aprendizado. Este trabalho carrega um pouco da dedicação, da paciência e da inspiração que recebemos em sala, na cozinha e em cada detalhe do processo.
+              Nosso sincero agradecimento às professoras pela orientação e pelo olhar atento que transformou cada etapa da disciplina em aprendizado. Este trabalho carrega um pouco da dedicação e inspiração que recebemos em sala, no laboratório e em cada detalhe do processo.
+              <br/><br/> E um agradecimento especial às PEDs que ajudaram em diversas receitas!
             </p>
           </div>
         </div>
