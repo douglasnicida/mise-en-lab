@@ -183,7 +183,7 @@ function NovaCard({ g, i }) {
 
 /* ─── Page ───────────────────────────────────────────────── */
 export default function FichaTecnica() {
-  const [openRef, setOpenRef] = useState(false);
+  const [openRef, setOpenRef] = useState(true);
   const [openImg, setOpenImg] = useState(null);
 
   return (
@@ -239,7 +239,8 @@ export default function FichaTecnica() {
               className="lg:col-span-7 space-y-5"
             >
               <p className="text-[14px] sm:text-[15px] text-dark/60 leading-[1.85] text-justify">
-                A <strong className="text-dark/75 font-semibold">Ficha Técnica Padronizada (FTP)</strong> é uma ferramenta fundamental nos serviços de alimentação que ajuda a organizar, padronizar e controlar a produção. Ela não é apenas um documento técnico, é uma ferramenta de gestão que une teoria e prática com o objetivo de aprimorar o controle de qualidade, a segurança alimentar (com o registro do valor nutricional de cada alimento utilizado) e a redução de desperdícios devido a melhor administração dos recursos disponíveis e cálculo do custo de produção da preparação.
+                O mise en place garante que o seu processo flua sem erros na hora do preparo. Mas como garantir que a sua receita saia exatamente igual todas as vezes? É aí que entra a matemática da gastronomia, a famosa FTP!
+                <br/><br/>A <strong className="text-dark/75 font-semibold">Ficha Técnica Padronizada (FTP)</strong> é uma ferramenta fundamental nos serviços de alimentação que ajuda a organizar, padronizar e controlar a produção. Ela não é apenas um documento técnico, é uma ferramenta de gestão que une teoria e prática com o objetivo de aprimorar o controle de qualidade, a segurança alimentar (com o registro do valor nutricional de cada alimento utilizado) e a redução de desperdícios devido a melhor administração dos recursos disponíveis e cálculo do custo de produção da preparação.
               </p>
 
               {/* quick stats */}

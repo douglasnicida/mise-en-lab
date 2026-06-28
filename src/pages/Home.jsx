@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { trabalhos, membros, stats } from '../data/content';
+import { trabalhos, membros, stats, miseEnPlaceContent } from '../data/content';
 import { HiArrowUpRight } from 'react-icons/hi2';
 import { HiArrowRight } from 'react-icons/hi';
 
@@ -64,6 +64,393 @@ function HeroPortraitWindow({ m, className = '', delay = 0 }) {
   );
 }
 
+// ── Componente de foto com fallback de placeholder ───────────────
+function FotoCard({ src, legenda, className = '', aspect = 'aspect-[4/5]', rounded = 'rounded-[1.4rem]', height='h-auto' }) {
+  return (
+    <figure className={`group relative flex flex-col ${className}`}>
+      <div
+        className={`relative w-full ${aspect} ${height} overflow-hidden ${rounded} border border-linen-300 ...`}
+      >
+        {src ? (
+          <img
+            src={src}
+            alt={legenda}
+            className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+        ) : (
+          /* Placeholder visual quando a imagem ainda não foi adicionada */
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-linen-100">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              className="text-stone-300"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="m21 15-5-5L5 21" />
+            </svg>
+            <span className="text-[11px] text-stone-300 text-center px-4">
+              {legenda}
+            </span>
+          </div>
+        )}
+      </div>
+      {legenda && (
+        <figcaption className="mt-3 text-center text-[11px] leading-relaxed text-dark/40">
+          {legenda}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+ 
+// ── Seta de transição antes → depois ────────────────────────────
+function ArrowTransition() {
+  return (
+    <div className="flex shrink-0 flex-col items-center justify-center gap-2 px-2">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.6 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col items-center gap-1"
+      >
+        {/* Linha pontilhada animada */}
+        <motion.div
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          style={{ originY: 0 }}
+          className="hidden h-12 w-px origin-top border-l border-dashed border-teal-400/50 md:block"
+        />
+ 
+        {/* Badge central */}
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-500/30 bg-teal-50 shadow-sm">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-teal-600"
+          >
+            {/* Seta para a direita em desktop, para baixo em mobile */}
+            <path d="M5 12h14M12 5l7 7-7 7" className="hidden md:block" />
+            <path d="M12 5v14M5 12l7 7 7-7" className="md:hidden" />
+          </svg>
+        </div>
+ 
+        <motion.div
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          style={{ originY: 0 }}
+          className="hidden h-12 w-px origin-top border-l border-dashed border-teal-400/50 md:block"
+        />
+      </motion.div>
+ 
+      {/* Label */}
+      {/* <span className="whitespace-nowrap rounded-full border border-teal-500/20 bg-teal-50 px-3 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-teal-600">
+        Antes → Depois
+      </span> */}
+    </div>
+  );
+}
+ 
+// ── Componente principal ─────────────────────────────────────────
+function MiseEnPlaceSection() {
+  return (
+    <section className="bg-teal-100 py-24 section-divider-top">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+ 
+        {/* ── Cabeçalho ── */}
+        <div className="mb-16 border-b border-stone-200 pb-6">
+          <motion.p
+            custom={0}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="eyebrow mb-4 text-stone-400"
+          >
+            Técnica · Gastronomia
+          </motion.p>
+ 
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <motion.h2
+              custom={1}
+              variants={rev}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="font-pally font-semibold leading-[0.95] text-dark"
+              style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
+            >
+              Mise en<br />
+              <span className="font-pally font-normal text-teal-600">Place</span>
+            </motion.h2>
+ 
+            <motion.p
+              custom={2}
+              variants={rev}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="max-w-xs text-[11px] font-semibold uppercase tracking-widest text-stone-600"
+            >
+              "Posto no lugar" — expressão francesa
+            </motion.p>
+          </div>
+        </div>
+ 
+        {/* ── O que é + foto antes/depois ── */}
+        <div className="mb-24 grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+ 
+          {/* Texto explicativo */}
+          <motion.div
+            custom={0}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex flex-col justify-center"
+          >
+            <h3 className="font-display mb-6 text-[23px] font-semibold leading-snug text-dark">
+              O que é Mise en Place e por que ele vai mudar a sua rotina na cozinha?
+            </h3>
+ 
+            <div className="space-y-4 text-[15px] leading-relaxed text-dark/58 text-justify">
+              <p>
+                Se você já assistiu a um programa de culinária na TV, com certeza já viu aqueles chefs que
+                cozinham com tudo perfeitamente separado em potinhos de vidro, sem nenhum pingo de estresse.
+                Parece mágica, né? Mas o nome disso é <span className="font-semibold text-dark/80">Mise en Place</span>.
+              </p>
+              <p>
+                Essa expressão francesa significa <em>"posto no lugar"</em> ou{' '}
+                <em>"colocado em ordem"</em>. Na gastronomia, ela representa aquela etapa fundamental de organizar,
+                separar e picar todos os ingredientes — e separar os utensílios — antes mesmo de acender o fogo.
+              </p>
+              <p>
+                Além de garantir agilidade na hora de cozinhar, o mise en place evita acidentes (como esquecer um
+                ingrediente ou queimar o alho enquanto você tenta correr para picar o tomate) e ajuda a manter o
+                controle de qualidade de tudo o que você prepara.
+              </p>
+            </div>
+ 
+            {/* Destaque / pull quote */}
+            <blockquote className="mt-8 border-l-2 border-teal-500 pl-5">
+              <p className="text-[14px] italic leading-relaxed text-dark/50">
+                "Organizar o seu espaço é, essencialmente, organizar as suas ideias."
+              </p>
+              <footer className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-stone-500">
+                — Anthony Bourdain, Cozinha Confidencial
+              </footer>
+            </blockquote>
+          </motion.div>
+ 
+          {/* Antes / Depois */}
+          <motion.div
+            custom={1}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col items-center gap-4 md:flex-row md:items-stretch md:gap-0">
+ 
+              {/* Card ANTES */}
+              <div className="relative w-full md:flex-1">
+                <div className="absolute -top-3 left-4 z-10 rounded-full border border-stone-300 bg-white px-3 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-stone-500 shadow-sm">
+                  Antes
+                </div>
+                <FotoCard
+                  src={miseEnPlaceContent.fotos.antes.src}
+                  legenda={miseEnPlaceContent.fotos.antes.legenda}
+                  aspect="aspect-square"
+                  rounded="rounded-full"
+                  className="h-full"
+                />
+              </div>
+ 
+              {/* Seta de transição */}
+              <ArrowTransition />
+ 
+              {/* Card DEPOIS */}
+              <div className="relative w-full md:flex-1">
+                <div className="absolute -top-3 left-4 z-10 rounded-full border border-teal-400/40 bg-teal-50 px-3 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-teal-600 shadow-sm">
+                  Depois
+                </div>
+                <FotoCard
+                  src={miseEnPlaceContent.fotos.depois.src}
+                  legenda={miseEnPlaceContent.fotos.depois.legenda}
+                  aspect="aspect-square"
+                  rounded="rounded-full"
+                  className="h-full"
+                />
+              </div>
+ 
+            </div>
+          </motion.div>
+        </div>
+ 
+        {/* ── Dicas & Curiosidades ── */}
+        <div className="mb-24">
+          <motion.div
+            custom={0}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mb-10 flex items-center gap-4"
+          >
+            <div className="h-px flex-1 bg-stone-200" />
+            <span className="eyebrow flex items-center gap-2 text-[13px] text-stone-800">
+              <span>💡</span> Dicas & Curiosidades que você precisa saber
+            </span>
+            <div className="h-px flex-1 bg-stone-200" />
+          </motion.div>
+ 
+          <div className="grid gap-px bg-stone-200 sm:grid-cols-2">
+            {miseEnPlaceContent.curiosidades.map((c, i) => (
+              <motion.article
+                key={c.id}
+                custom={i}
+                variants={rev}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="group bg-linen-50 p-8 transition-colors duration-300 hover:bg-teal-50"
+              >
+                <div className="mb-4 flex items-start gap-3">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-stone-200 bg-white text-lg shadow-sm transition-colors duration-300 group-hover:border-teal-300"
+                    aria-hidden
+                  >
+                    {c.icone}
+                  </span>
+                  <h4 className="font-display mt-1 text-[19px] font-semibold text-dark">
+                    {c.titulo}
+                  </h4>
+                </div>
+                <p className="text-[14px] leading-relaxed text-dark/55 text-justify">
+                  {c.texto}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+ 
+        {/* ── Foto do antepasto ── */}
+        <div className="mb-24">
+          <motion.div
+            custom={0}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <p className="eyebrow mb-2 text-stone-500 font-bold">Na prática</p>
+            <h3 className="font-display text-[22px] font-semibold text-dark">
+              Mise en Place do Antepasto de Berinjela
+            </h3>
+          </motion.div>
+ 
+          <motion.div
+            custom={1}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <FotoCard
+              src={miseEnPlaceContent.fotos.antepasto.src}
+              legenda={miseEnPlaceContent.fotos.antepasto.legenda}
+              aspect="aspect-[16/7]"
+              height="h-[870px]"
+            />
+          </motion.div>
+        </div>
+ 
+        {/* ── Cuidados ── */}
+        <div>
+          <motion.div
+            custom={0}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mb-10 flex items-center gap-4"
+          >
+            <div className="h-px flex-1 bg-stone-200" />
+            <span className="eyebrow flex items-center gap-2 text-[13px] text-stone-600 font-bold">
+              <span>⚠️</span> Cuidados importantes para não errar a mão
+            </span>
+            <div className="h-px flex-1 bg-stone-200" />
+          </motion.div>
+ 
+          <div className="grid gap-6 sm:grid-cols-2">
+            {miseEnPlaceContent.cuidados.map((c, i) => (
+              <motion.div
+                key={c.id}
+                custom={i}
+                variants={rev}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="group flex gap-5 rounded-[1.2rem] border border-stone-200 bg-white p-6 transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(32,51,49,0.07)]"
+              >
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-100 bg-linen-50 text-xl shadow-sm"
+                  aria-hidden
+                >
+                  {c.icone}
+                </div>
+                <div>
+                  <h4 className="font-display mb-2 text-[18px] font-semibold text-dark">
+                    {c.titulo}
+                  </h4>
+                  <p className="text-[14px] leading-relaxed text-dark/55">{c.texto}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+ 
+          {/* Dica dos membros */}
+          <motion.div
+            custom={2}
+            variants={rev}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mt-8 flex items-start gap-4 rounded-[1.2rem] border border-teal-500/20 bg-teal-50 p-6"
+          >
+            <span className="mt-0.5 text-xl" aria-hidden>
+              🌿
+            </span>
+            <div>
+              <p className="mb-1 text-[12px] font-semibold uppercase tracking-widest text-teal-600">
+                Dica dos membros
+              </p>
+              <p className="text-[14px] leading-relaxed text-dark/65">
+                Da próxima vez que for testar aquela receita nova, separe as xícaras, pique os temperos e
+                monte o seu mise en place. Cozinhar vai se tornar algo muito mais terapêutico — vale testar!
+              </p>
+            </div>
+          </motion.div>
+        </div>
+ 
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   const destaques = trabalhos.filter(t => t.destaque).slice(0, 3);
@@ -193,62 +580,9 @@ export default function Home() {
         </div>
       </section> */}
 
-      {/* ════════════════════════════════════
-          TRABALHOS EM DESTAQUE
-          ════════════════════════════════════ */}
-      <section className="bg-teal-100 py-24 section-divider-top">
-        <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
-
-          {/* Header */}
-          <div className="flex items-end justify-between mb-16 pb-6 border-b border-stone-300">
-            <div>
-              <p className="eyebrow text-stone-500 mb-4">Produções acadêmicas</p>
-              <h2 className="font-pally font-semibold text-dark leading-[0.95]"
-                style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
-                Trabalhos<br /><span className="font-pally text-stone-500 font-normal">em destaque</span>
-              </h2>
-            </div>
-            <Link to="/trabalhos"
-              className="hidden sm:flex eyebrow text-dark/40 hover:text-dark transition-colors items-center gap-2">
-              Ver todos ↗
-            </Link>
-          </div>
-
-          {/* Card grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-300">
-            {destaques.map((t, i) => {
-              const brd = cardBorder[t.cor] || cardBorder.sage;
-              const tg  = tagStyle[t.cor]   || tagStyle.sage;
-              return (
-                <motion.div key={t.id}
-                  custom={i} variants={rev} initial="hidden" whileInView="show" viewport={{ once: true }}
-                  className="bg-bg p-8 group hover:bg-surface transition-colors duration-300 cursor-default">
-                  <div className="flex items-start justify-between mb-6">
-                    <span className={`tag-sm ${tg}`}>{t.categoria}</span>
-                    <span className="eyebrow text-dark/25 text-[9px]">{String(i + 1).padStart(2, '0')}</span>
-                  </div>
-                  <h3 className="font-display text-[22px] font-semibold text-dark leading-snug mb-4">
-                    {t.titulo}
-                  </h3>
-                  <p className="text-[13px] text-dark/50 leading-relaxed mb-8 line-clamp-3">
-                    {t.descricao}
-                  </p>
-                  <div className="border-t border-stone-300 pt-5 flex items-center justify-between">
-                    <p className="text-[11px] text-dark/40">
-                      {t.autores.slice(0, 2).join(' · ')}{t.autores.length > 2 && ` +${t.autores.length - 2}`}
-                    </p>
-                    <span className="eyebrow text-[9px] text-dark/30">{t.data}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <div className="mt-8 sm:hidden">
-            <Link to="/trabalhos" className="btn-outline-dark w-full justify-center">Ver todos</Link>
-          </div>
-        </div>
-      </section>
+      {/* <section className='bg-teal-100 py-24 section-divider-top'> */}
+            <MiseEnPlaceSection />
+      {/* </section> */}
 
       {/* ════════════════════════════════════
           CTA FINAL — dark + bold
@@ -265,18 +599,18 @@ export default function Home() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.7 }}
           className="section-inner relative max-w-4xl mx-auto px-6 md:px-10">
-          <p className="eyebrow text-stone-300/30 mb-6">Entre em contato</p>
+          {/* <p className="eyebrow text-stone-300/30 mb-6">Entre em contato</p> */}
           <h2 className="font-display font-semibold text-linen-50 leading-[0.95] mb-10"
             style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
             {/* CTA: Frase de impacto */}
-            [Quer saber mais<br />
-            <em className="font-light text-teal-400">sobre os projetos?]</em>
+            [Receitas realizadas<br />
+            <em className="font-light text-teal-400">por nós!]</em>
           </h2>
           <div className="flex flex-wrap items-center gap-4">
             {/* <Link to="/contato" className="btn-cta-dark">
               Entrar em contato ↗
             </Link> */}
-            <Link to="/trabalhos" className="eyebrow text-stone-300/40 hover:text-stone-300 transition-colors">
+            <Link to="/trabalhos" className="eyebrow text-stone-200/40 hover:text-stone-300 transition-colors">
               Ver trabalhos →
             </Link>
           </div>

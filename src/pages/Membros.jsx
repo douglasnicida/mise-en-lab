@@ -86,48 +86,22 @@ export default function Membros() {
       <section className="section-band-dark border-y border-white/8">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10 py-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="eyebrow text-linen-300/30 mb-5">Orientação</p>
+            <p className="eyebrow text-linen-300/60 mb-5">Orientação</p>
             <h2 className="font-display font-semibold text-linen-50 leading-tight mb-4"
               style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
               {/* DOCENTE: Nome do professor */}
-              [Prof./Profa.<br /><em className="font-light text-teal-400">[Nome do Docente]]</em>
+              Profa. <em className="font-light text-teal-400">Andressa Mara Baseggio</em><br />
+              Profa. <em className="font-light text-teal-400">Caroline Capitani</em><br />
             </h2>
-            <p className="eyebrow text-linen-300/30 mb-6">
+            <p className="eyebrow text-linen-300/60 mb-6">
               {/* DOCENTE: Cargo / disciplina */}
-              [Cargo · Disciplina]
+              [Docente · NT402 - Técnica Dietética]
             </p>
-            <p className="text-[13px] text-linen-300/45 leading-relaxed max-w-[380px]">
+            <p className="text-[13px] text-linen-300/45 leading-relaxed max-w-[580px]">
               {/* DOCENTE: Mini bio / agradecimento */}
-              [Breve agradecimento ou apresentação do/a docente responsável pela disciplina.]
+              Nosso sincero agradecimento às professoras pela orientação cuidadosa, pela generosidade em compartilhar conhecimento e pelo olhar atento que transformou cada etapa da disciplina em aprendizado. Este trabalho carrega um pouco da dedicação, da paciência e da inspiração que recebemos em sala, na cozinha e em cada detalhe do processo.
             </p>
           </div>
-          {/* Avatar grande docente */}
-          <div className="flex justify-center md:justify-end">
-            <div className="w-40 h-40 bg-dark border border-white/10 rounded-full flex items-center justify-center">
-              <span className="font-display text-5xl font-semibold text-linen-300/20">
-                {/* DOCENTE: Inicial do nome */}
-                [P]
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════
-          AGRADECIMENTOS
-          ══════════════════ */}
-      <section className="section-band-soft py-20 border-t border-linen-300">
-        <div className="section-inner max-w-3xl mx-auto px-6 text-center">
-          <p className="eyebrow text-stone-500 mb-5">Agradecimentos</p>
-          <h2 className="font-display font-semibold text-dark mb-4"
-            style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>
-            {/* AGRADECIMENTOS: Título */}
-            [Obrigado/a a quem<br /><em className="font-light text-stone-500">tornou isso possível]</em>
-          </h2>
-          <p className="text-[13px] text-dark/50 leading-relaxed max-w-lg mx-auto">
-            {/* AGRADECIMENTOS: Texto */}
-            [Agradecimentos à instituição, professores, laboratórios, colegas de turma, etc.]
-          </p>
         </div>
       </section>
 

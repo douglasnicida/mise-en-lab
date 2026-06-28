@@ -1,1 +1,1 @@
-export { membros, trabalhos, categorias, stats } from '../mock.ts'
+export { membros, trabalhos, categorias, stats, miseEnPlaceContent } from '../mock.ts'

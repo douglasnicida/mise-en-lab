@@ -5,6 +5,10 @@ import gabriella from './assets/images/members/gabi.jpeg';
 
 import salad from './assets/images/salad/salad.jpeg';
 import mise_salad from './assets/images/salad/mise-en-place-salad.jpeg';
+import before from './assets/images/mise-en-place/before.jpeg';
+import after from './assets/images/mise-en-place/after.jpeg';
+import mise_en_place_antepasto from './assets/images/mise-en-place/mise-en-place-antepasto.jpeg';
+
 
 
 /**
@@ -24,16 +28,15 @@ export const membros = [
     {
       id: 1,
       nome: 'Gabriella Lunai',
-      papel: '---',
+      papel: '20 anos - Limeira, SP',
       bio: '',
-      // URL da foto — placeholders estáveis (picsum); substitua pelas fotos reais do grupo
       avatar: gabriella,
-      lattes: '#',  // Link para o Lattes / LinkedIn
+      lattes: '#',
     },
     {
       id: 2,
       nome: 'Giovanna Nicida',
-      papel: '---',
+      papel: '20 anos - Indaiatuba, SP',
       bio: '',
       avatar: linguica,
       lattes: '#',
@@ -41,7 +44,7 @@ export const membros = [
     {
       id: 3,
       nome: 'Julia Sodre',
-      papel: '---',
+      papel: '21 anos - São Paulo, SP',
       bio: '',
       avatar: julia,
       lattes: '#',
@@ -49,19 +52,12 @@ export const membros = [
     {
       id: 4,
       nome: 'Maria Rose Matos',
-      papel: '---',
+      // TODO: trocar a idade
+      papel: '39 anos - Rio Negro, AM',
       bio: '',
       avatar: rose,
       lattes: '#',
-    },
-    {
-      id: 5,
-      nome: 'Sophia Mendes',
-      papel: '---',
-      bio: '',
-      avatar: '',
-      lattes: '#',
-    },
+    }
   ];
   
 // ==========================================
@@ -103,8 +99,6 @@ export const trabalhos = [
       '1/2 xícara de azeitonas verdes ou pretas com caroço picadas',
       '2 cenouras raladas',
       '1/2 pé de alface americana',
-      // TODO: tirar molho de topico (ele esta aparecendo como um topico da listagem)
-      // ── Molho
       'Molho:',
       '1/2 maço de cebolinha picada',
       '2 colheres de sopa de vinagre balsâmico ou vinagre de maçã',
@@ -308,5 +302,54 @@ export type Trabalho = typeof trabalhos[number];
     { valor: '8', label: 'Disciplinas' },
   ];
 
+
+
+  // =======================================
+  // Mise En Place Content
+  // =======================================
+export const miseEnPlaceContent = {
+  fotos: {
+    antes: {
+      src: before,
+      legenda: 'Ingredientes sem organização prévia',
+    },
+    depois: {
+      src: after,
+      legenda: 'Ingredientes organizados e prontos para uso',
+    },
+    antepasto: {
+      src: mise_en_place_antepasto,
+      legenda: 'Mise en Place do Antepasto de Berinjela',
+    },
+  },
+  curiosidades: [
+    {
+      id: 'origem',
+      icone: '📖',
+      titulo: 'A origem do conceito',
+      texto: 'O conceito foi desenvolvido em meados do século XIX por Auguste Escoffier, um ex-soldado francês que levou a rigidez e a organização dos sistemas militares para dentro das cozinhas profissionais. No início, seus colegas criticaram — mas não demorou para perceberem que a técnica salvava vidas (e jantares!) no fluxo do restaurante.',
+    },
+    {
+      id: 'alem',
+      icone: '🧠',
+      titulo: 'Muito além da cozinha',
+      texto: 'O termo ficou tão famoso que ultrapassou as barreiras da gastronomia. Hoje, psicólogos, programadores e neurocientistas usam o mise en place como metáfora para organização mental. Anthony Bourdain dizia em "Cozinha Confidencial" que o mise en place era a extensão da sua própria mente: se a bancada estivesse bagunçada, a mente do cozinheiro também estava.',
+    },
+  ],
+  cuidados: [
+    {
+      id: 'desperdicio',
+      icone: '♻️',
+      titulo: 'Evite o desperdício',
+      texto: 'Estar preparado é ótimo, mas cuidado para não exagerar na antecedência. Se você picar as coisas cedo demais, as ervas podem murchar, os vegetais perdem a crocância e alguns alimentos podem ressecar. Prepare apenas o necessário para o momento!',
+    },
+    {
+      id: 'contaminacao',
+      icone: '🔪',
+      titulo: 'Atenção à contaminação cruzada',
+      texto: 'Higiene em primeiro lugar. Utilize sempre utensílios diferentes como facas e tábuas para a pré-preparação de alimentos crus e cozidos, ou de carnes e vegetais. Isso evita a proliferação de bactérias e garante um processo seguro.',
+    },
+  ],
+};
 
 
