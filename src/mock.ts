@@ -9,6 +9,20 @@ import before from './assets/images/mise-en-place/before.jpeg';
 import after from './assets/images/mise-en-place/after.jpeg';
 import mise_en_place_antepasto from './assets/images/mise-en-place/mise-en-place-antepasto.jpeg';
 
+import coconut_bread_1 from './assets/images/coconut-bread/WhatsApp Image 2026-06-27 at 19.08.23.jpeg';
+import coconut_bread_2 from './assets/images/coconut-bread/coconut-bread-2.jpeg';
+import coconut_bread_3 from './assets/images/coconut-bread/coconut-bread-3.jpeg';
+
+import poke_vegano from './assets/images/poke/WhatsApp Image 2026-06-27 at 19.09.36.jpeg';
+import antepasto_berinjela from './assets/images/antepasto/antepasto-fogo.jpeg';
+import bolinho_arroz_1 from './assets/images/bolinho-arroz/mise-en-place-bolinho-de-arroz.jpeg';
+import bolinho_arroz_2 from './assets/images/bolinho-arroz/fazendo-bolinho-de-arroz.jpeg';
+import bolinho_arroz_3 from './assets/images/bolinho-arroz/bolinho-de-arroz-prato.jpeg';
+import bolinho_arroz_0 from './assets/images/bolinho-arroz/bolinho-de-arroz.jpeg';
+
+import feijoada_vegana_0 from './assets/images/mise-en-place/mise-en-place-antepasto.jpeg';
+import feijoada_vegana_1 from './assets/images/feijoada/feijoada-mise-en-place.jpeg';
+import feijoada_vegana_2 from './assets/images/feijoada/feijoada.jpeg';
 
 
 /**
@@ -52,8 +66,7 @@ export const membros = [
     {
       id: 4,
       nome: 'Maria Rose Matos',
-      // TODO: trocar a idade
-      papel: '39 anos - Rio Negro, AM',
+      papel: '34 anos - Rio Negro, AM',
       bio: '',
       avatar: rose,
       lattes: '#',
@@ -73,7 +86,7 @@ export const trabalhos = [
     id: 1,
     titulo: 'Salada de Grãos',
     descricao:
-      'Resumo do trabalho — explique o objetivo, metodologia e principais conclusões em 2 a 3 frases.',
+      'Aula de FTP e Indicadores de Rendimento',
     autores: ['Membro 1', 'Membro 2'],
     data: 'Mês/Ano',
     destaque: true,
@@ -122,7 +135,7 @@ export const trabalhos = [
     id: 2,
     titulo: 'Poke Vegano',
     descricao:
-      'Resumo do trabalho — explique o objetivo, metodologia e principais conclusões em 2 a 3 frases.',
+      'Aula de Frutas e Hortaliças',
     autores: ['Membro 3'],
     data: 'Mês/Ano',
     destaque: true,
@@ -130,8 +143,7 @@ export const trabalhos = [
     cor: 'earth' as const,
 
     fotos: [
-      '/img/poke-vegano-1.jpg',
-      '/img/poke-vegano-2.jpg',
+      poke_vegano,
     ],
     ingredientes: [
       // ── Poke
@@ -163,7 +175,7 @@ export const trabalhos = [
     id: 3,
     titulo: 'Antepasto de Berinjela',
     descricao:
-      'Resumo do trabalho — explique o objetivo, metodologia e principais conclusões em 2 a 3 frases.',
+      'Aula de Frutas e Hortaliças',
     autores: ['Membro 1', 'Membro 4'],
     data: 'Mês/Ano',
     destaque: false,
@@ -171,8 +183,7 @@ export const trabalhos = [
     cor: 'clay' as const,
 
     fotos: [
-      '/img/antepasto-berinjela-1.jpg',
-      '/img/antepasto-berinjela-2.jpg',
+      antepasto_berinjela,
     ],
     ingredientes: [
       '700 g de berinjela cortada em cubos',
@@ -206,7 +217,7 @@ export const trabalhos = [
     id: 4,
     titulo: 'Bolinho de Arroz',
     descricao:
-      'Resumo do trabalho — explique o objetivo, metodologia e principais conclusões em 2 a 3 frases.',
+      'Aula de Cereais e Tubérculos',
     autores: ['Membro 2', 'Membro 5'],
     data: 'Mês/Ano',
     destaque: false,
@@ -214,8 +225,10 @@ export const trabalhos = [
     cor: 'sage' as const,
 
     fotos: [
-      '/img/bolinho-arroz-1.jpg',
-      '/img/bolinho-arroz-2.jpg',
+      bolinho_arroz_0,
+      bolinho_arroz_1,
+      bolinho_arroz_2,
+      bolinho_arroz_3,
     ],
     ingredientes: [
       '2 xícaras (chá) de arroz polido (branco) cru',
@@ -238,7 +251,7 @@ export const trabalhos = [
     id: 5,
     titulo: 'Feijoada Vegana',
     descricao:
-      'Resumo do trabalho — explique o objetivo, metodologia e principais conclusões em 2 a 3 frases.',
+      'Aula de Leguminosas',
     autores: ['Membro 3', 'Membro 4', 'Membro 5'],
     data: 'Mês/Ano',
     destaque: false,
@@ -246,8 +259,9 @@ export const trabalhos = [
     cor: 'earth' as const,
 
     fotos: [
-      '/img/feijoada-vegana-1.jpg',
-      '/img/feijoada-vegana-2.jpg',
+      feijoada_vegana_0,
+      feijoada_vegana_1,
+      feijoada_vegana_2,
     ],
     ingredientes: [
       '2 1/2 xícaras de feijão preto cru (deixar de molho no dia anterior)',
@@ -274,6 +288,55 @@ export const trabalhos = [
       'Adicione os cogumelos quando a feijoada já estiver cozida, misture bem e desligue o fogo.',
       'Ajuste o sal e adicione a cebolinha higienizada e picada antes de servir.',
     ],
+  },
+
+  {
+    id: 6,
+    titulo: 'Rosca de Coco',
+    descricao:
+      'Aula de Comensalidade',
+    autores: ['Membro 1', 'Membro 2', 'Membro 3', 'Membro 4'],
+    data: 'Mês/Ano',
+    destaque: false,
+    link: 'https://youtu.be/pu-hz9q7dTw?is=smvTu1tsK54_XIBl',
+    cor: 'clay' as const,
+
+    fotos: [
+      coconut_bread_1,
+      coconut_bread_2,
+      coconut_bread_3,
+    ],
+    ingredientes: [
+      'Massa:',
+      '600 gramas de farinha de trigo',
+      '200 ml de leite morno',
+      '2 ovos',
+      '2 colheres de sopa de manteiga',
+      '5 colheres de sopa de açúcar',
+      'Coloca uma pitada de sal para realçar o sabor',
+      '1 pacote de fermento biológico seco (10 gr)',
+      'Cobertura:',
+      'Leite condensado',
+      'Coco ralado',
+    ],
+    modoPreparo: [
+      'Em uma tigela, adicione os 2 ovos e as 5 colheres de sopa de açúcar (aproveite para adicionar a pitada de sal para realçar o sabor). Misture muito bem esses ingredientes.',
+      'Adicione as 2 colheres de sopa de manteiga e os 200 ml de leite morno.',
+      'Acrescente o pacote de fermento biológico seco (10g) e misture.',
+      'Comece a adicionar as 600 gramas de farinha de trigo de forma gradual.',
+      'Assim que a massa começar a desgrudar da tigela, transfira-a para uma bancada limpa e comece a trabalhar com as mãos.',
+      'Sove a massa por aproximadamente 10 minutos, até que ela fique bem homogênea e lisa.',
+      'Coloque a massa de volta na tigela, cubra com um pano e deixe descansar por 20 minutos.',
+      'Após o descanso, retorne a massa para a bancada e divida-a em 8 partes iguais.',
+      'Modele cada uma das partes em formato de bolinhas.',
+      'Acomode as 8 bolinhas, uma ao lado da outra, dentro da forma de buraco untada com manteiga.',
+      'Cubra novamente com um pano e deixe a massa descansar até dobrar de tamanho.',
+      'Depois que a massa crescer, pincele delicadamente a superfície com 1 ovo batido.',
+      'Leve ao forno preaquecido a 180°C por cerca de 25 minutos ou até que a rosca esteja bem dourada.',
+      'Desenforme a rosca enquanto ela ainda estiver morna e para finalizar, pincele leite condensado por cima e salpique coco ralado a gosto.',
+    ],
+    texto_fonte: 'Receita da Rosca de Coco: Youtube - CanalReceitaCaseira',
+    fonte: 'https://youtu.be/pu-hz9q7dTw?is=smvTu1tsK54_XIBl',
   },
 ];
 
@@ -351,5 +414,4 @@ export const miseEnPlaceContent = {
     },
   ],
 };
-
 

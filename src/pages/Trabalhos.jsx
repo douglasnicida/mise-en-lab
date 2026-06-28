@@ -305,7 +305,7 @@ function WorkModal({ trabalho, onClose }) {
             {/* ingredientes */}
             {trabalho.ingredientes?.length > 0 && (
               <div className="mb-8">
-                <h3 className="eyebrow text-[14px] text-dark/35 tracking-widest mb-4 uppercase">
+                <h3 className="eyebrow text-[14px] text-dark/55 tracking-widest mb-4 uppercase">
                   Ingredientes
                 </h3>
                 <ul className="space-y-[10px]">
@@ -328,20 +328,20 @@ function WorkModal({ trabalho, onClose }) {
 
             {/* divisor */}
             {trabalho.ingredientes?.length > 0 && trabalho.modoPreparo?.length > 0 && (
-              <div className="border-t border-linen-300 mb-8" />
+              <div className="border-t border-black/30 mb-8" />
             )}
 
             {/* modo de preparo */}
             {trabalho.modoPreparo?.length > 0 && (
               <div>
-                <h3 className="eyebrow text-[14px] text-dark/35 tracking-widest mb-4 uppercase">
+                <h3 className="eyebrow text-[14px] text-dark/55 tracking-widest mb-4 uppercase">
                   Modo de Preparo
                 </h3>
                 <ol className="space-y-5">
                   {trabalho.modoPreparo.map((passo, i) => (
                     <li key={i} className="flex items-start gap-4 text-[18px] text-dark/65 leading-relaxed">
-                      <span className="font-display text-[20px] text-teal-500/40 leading-none shrink-0 w-5 text-right select-none">
-                        {i + 1}
+                      <span className="font-display font-bold text-[22px] text-teal-500/80 leading-none shrink-0 w-5 text-right select-none">
+                        {i + 1}.
                       </span>
                       <span>{passo}</span>
                     </li>
@@ -350,7 +350,16 @@ function WorkModal({ trabalho, onClose }) {
               </div>
             )}
 
+            { trabalho.fonte && (
+              <div className="mt-8 flex gap-2 font-display text-[19px]">
+                Fonte: 
+                <a className="space-y-5 underline text-teal-600 font-semibold" href={trabalho.fonte} target="_blank" rel="noopener noreferrer">
+                  {trabalho.texto_fonte}
+                </a>
+              </div>
+            )}
           </div>
+
         </motion.div>
       </motion.div>
 
@@ -404,7 +413,7 @@ export default function Trabalhos() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.15 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-linen-300"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  bg-linen-300"
           >
             {trabalhos.map((t, i) => (
               <motion.article
@@ -414,49 +423,29 @@ export default function Trabalhos() {
                 initial="hidden"
                 animate="show"
                 onClick={() => setSelected(t)}
-                className="
-                  bg-bg hover:bg-surface
+                className={`${i %2 === 0 ? 'bg-surface' : 'bg-teal-100'} border border-teal-500/20 hover:bg-surface
                   transition-colors duration-300
                   p-8 flex flex-col
-                  cursor-pointer group
-                "
+                  cursor-pointer group`}
               >
                 {/* carrossel de fotos */}
                 {t.fotos?.length > 0 && (
                   <CardCarousel fotos={t.fotos} titulo={t.titulo} />
                 )}
 
-                <h2 className="font-display text-[21px] font-semibold text-dark leading-snug mb-3">
+                <h2 className="font-display text-[21px] font-bold text-dark leading-snug mb-3">
                   {t.titulo}
                 </h2>
-                <p className="text-[13px] text-dark/50 leading-relaxed flex-1 mb-7 line-clamp-4">
+                <p className="text-[16px] text-dark/50 leading-relaxed flex-1 mb-7 line-clamp-4">
                   {t.descricao}
                 </p>
 
-                <span className="eyebrow text-[9px] text-teal-600/70 group-hover:text-teal-600 transition-colors tracking-widest">
+                <span className="eyebrow text-[12px] text-teal-600/70 font-bold group-hover:text-teal-600 transition-colors tracking-widest">
                   Ver receita →
                 </span>
               </motion.article>
             ))}
           </motion.div>
-        </div>
-      </section>
-
-      {/* ══════════════════
-          CTA
-          ══════════════════ */}
-      <section className="section-band-soft py-20 border-t border-linen-300">
-        <div className="section-inner max-w-3xl mx-auto px-6 text-center">
-          <p className="eyebrow text-stone-500 mb-5">Contribua</p>
-          <h2
-            className="font-display font-semibold text-dark mb-4"
-            style={{ fontSize: 'clamp(26px, 3.5vw, 44px)' }}
-          >
-            [Quer compartilhar<br /><em className="font-light text-stone-500">seu trabalho?]</em>
-          </h2>
-          <p className="text-[13px] text-dark/50 leading-relaxed max-w-md mx-auto">
-            [Instrução sobre como membros podem adicionar seus trabalhos, ou contato para contribuições.]
-          </p>
         </div>
       </section>
 

@@ -17,9 +17,6 @@ export default function Footer() {
                 {PROJECT_NAME}
               </span>
             </div>
-            <p className="text-sm text-stone-400 leading-relaxed">
-              [Descrição curta do grupo — turma, semestre e propósito do site]
-            </p>
           </div>
 
           {/* Links */}

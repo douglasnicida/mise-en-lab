@@ -96,6 +96,25 @@ const outrasPreparacoes = [
   { titulo: 'Assado', legenda: '', img: peixeAssadoImg },
 ];
 
+const sobreIndexLinks = [
+  { href: '#leguminosas', label: 'Leguminosas', level: 'group' },
+  { href: '#leg-definicao', label: 'Definição' },
+  { href: '#leg-nutricao', label: 'Valor nutricional' },
+  { href: '#leg-preparo', label: 'Preparo' },
+  { href: '#leg-dicas', label: 'Dicas' },
+  { href: '#leg-impacto', label: 'Impacto' },
+  { href: '#leg-receita', label: 'Receita' },
+  { href: '#carnes-pescados', label: 'Carnes e pescados', level: 'group' },
+  { href: '#carnes-nutricao', label: 'Carnes' },
+  { href: '#carnes-mise-en-place', label: 'Mise en place' },
+  { href: '#cortes-bovinos', label: 'Cortes bovinos' },
+  { href: '#pescados', label: 'Pescados', level: 'group' },
+  { href: '#pescados-nutricao', label: 'Nutrição dos pescados' },
+  { href: '#pescados-preparo', label: 'Preparo dos pescados' },
+  { href: '#pescados-curiosidade', label: 'Curiosidade' },
+  { href: '#pescados-preparacoes', label: 'Preparações' },
+];
+
 /* ─── Componentes reutilizáveis ───────────────────────────────────── */
 
 /** Cabeçalho de seção com linha decorativa */
@@ -145,9 +164,9 @@ function TopicoList({ items }) {
 }
 
 /** Hero com background image placeholder */
-function HeroSection({ label, title, subtitle, imgPlaceholder }) {
+function HeroSection({ id, label, title, subtitle, imgPlaceholder }) {
   return (
-    <section className="relative overflow-hidden min-h-[340px] flex items-end">
+    <section id={id} className="relative overflow-hidden min-h-[340px] flex items-end scroll-mt-24">
       {/* Background image placeholder — troque pelo seu <img> ou CSS background-image */}
       <div
         className="absolute inset-0 bg-stone-800"
@@ -207,18 +226,71 @@ function HeroSection({ label, title, subtitle, imgPlaceholder }) {
   );
 }
 
+function PageIndex() {
+  return (
+    <>
+      <nav
+        aria-label="Índice da página"
+        className="sticky top-0 z-30 border-b border-linen-300 bg-bg/95 backdrop-blur md:hidden"
+      >
+        <div className="flex gap-2 overflow-x-auto px-4 py-3">
+          {sobreIndexLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`shrink-0 border px-3 py-2 font-mono uppercase transition-colors hover:border-teal-400 hover:text-teal-700 ${
+                link.level === 'group'
+                  ? 'border-teal-400/50 bg-teal-50 text-[12px] font-semibold tracking-[0.16em] text-dark/85'
+                  : 'border-linen-300 bg-surface text-[11px] font-medium tracking-[0.12em] text-dark/70'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <nav
+        aria-label="Índice da página"
+        className="fixed right-5 top-32 z-30 hidden w-52 border-l border-linen-300 bg-bg/90 py-4 pl-5 pr-3 shadow-[0_20px_50px_rgba(29,33,31,0.08)] backdrop-blur xl:block"
+      >
+        <p className="mb-4 font-mono text-[12px] font-semibold uppercase tracking-[0.22em] text-teal-700">
+          Índice
+        </p>
+        <div className="space-y-1">
+          {sobreIndexLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`block border-l transition-colors hover:border-teal-500 hover:text-teal-700 ${
+                link.level === 'group'
+                  ? 'mt-3 border-teal-400/60 pl-3 pt-1 font-pally text-[15px] font-semibold normal-case tracking-normal text-dark/85 first:mt-0'
+                  : 'border-transparent py-1 pl-4 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-dark/62'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    PÁGINA PRINCIPAL
 ═══════════════════════════════════════════════════════════════════ */
 export default function Sobre() {
   return (
     <div className="bg-bg">
+      <PageIndex />
 
       {/* ╔═══════════════════════════════════════╗
           ║          LEGUMINOSAS                  ║
           ╚═══════════════════════════════════════╝ */}
 
       <HeroSection
+        id="leguminosas"
         label="Grupo alimentar"
         title={
           <>
@@ -232,9 +304,9 @@ export default function Sobre() {
       />
 
       {/* ── Introdução ───────────────────────────────────────── */}
-      <section className="section-band py-20 border-b border-linen-300">
-        <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
-          <SectionLabel>Introdução</SectionLabel>
+      <section id="leg-introducao" className="section-band py-20 border-b border-linen-300 scroll-mt-24">
+        <div className="section-inner max-w-4xl mx-auto px-6 md:px-10 flex gap-3">
+          <p className="text-[17px] text-dark/65 leading-[1.9] max-w-3xl">🌱</p>
           <motion.p
             custom={0}
             variants={rev}
@@ -243,13 +315,13 @@ export default function Sobre() {
             viewport={{ once: true }}
             className="text-[17px] text-dark/65 leading-[1.9] max-w-3xl"
           >
-            Muito além de simples acompanhamentos, as leguminosas são pilares de uma alimentação saudável e equilibrada. Elas são essenciais para promover a saúde e prevenir doenças crônicas, unindo um altíssimo valor nutricional ao respeito à nossa identidade cultural.
+             Muito além de simples acompanhamentos, as leguminosas são pilares de uma alimentação saudável e equilibrada. Elas são essenciais para promover a saúde e prevenir doenças crônicas, unindo um altíssimo valor nutricional ao respeito à nossa identidade cultural.
           </motion.p>
         </div>
       </section>
 
       {/* ── Definição ────────────────────────────────────────── */}
-      <section className="section-band-soft py-20 border-b border-linen-300">
+      <section id="leg-definicao" className="section-band-soft py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Definição</SectionLabel>
           <BlockTitle>O que são leguminosas?</BlockTitle>
@@ -268,10 +340,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Valor Nutricional ─────────────────────────────────── */}
-      <section className="section-band py-20 border-b border-linen-300">
+      <section id="leg-nutricao" className="section-band py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Valor Nutricional</SectionLabel>
-          <BlockTitle>Composição e benefícios</BlockTitle>
+          <BlockTitle>Composição e benefícios 🔎</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -287,10 +359,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Tipo de Preparo ───────────────────────────────────── */}
-      <section className="section-band-soft py-20 border-b border-linen-300">
+      <section id="leg-preparo" className="section-band-soft py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Tipo de preparo</SectionLabel>
-          <BlockTitle>Como preparar leguminosas</BlockTitle>
+          <BlockTitle>Como preparar 📋</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -305,10 +377,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Dicas ─────────────────────────────────────────────── */}
-      <section className="section-band py-20 border-b border-linen-300">
+      <section id="leg-dicas" className="section-band py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Dicas</SectionLabel>
-          <BlockTitle>Boas práticas no uso de leguminosas</BlockTitle>
+          <BlockTitle>Boas práticas ✅</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -323,10 +395,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Impacto ───────────────────────────────────────────── */}
-      <section className="section-band-soft py-20 border-b border-linen-300">
+      <section id="leg-impacto" className="section-band-soft py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Impacto</SectionLabel>
-          <BlockTitle>Impacto na saúde e no meio ambiente</BlockTitle>
+          <BlockTitle>Impacto na saúde e no meio ambiente 🌳</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -341,10 +413,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Sugestões de preparo ──────────────────────────────── */}
-      <section className="section-band py-20">
+      <section id="leg-receita" className="section-band py-20 scroll-mt-24">
         <div className="section-inner max-w-7xl mx-auto px-6 md:px-10">
           <SectionLabel>Sugestões de preparo</SectionLabel>
-          <BlockTitle className="mb-10">Ideia de Receita</BlockTitle>
+          <BlockTitle className="mb-10">💡 Ideia de Receita</BlockTitle>
 
           <div className="">
             {legSugestoesCards.map((card, i) => (
@@ -422,6 +494,7 @@ export default function Sobre() {
       <div className="h-[3px] bg-gradient-to-r from-teal-500/30 via-teal-400 to-teal-500/30" />
 
       <HeroSection
+        id="carnes-pescados"
         label="Grupo alimentar"
         title={
           <>
@@ -435,9 +508,11 @@ export default function Sobre() {
       />
 
       {/* ── Introdução ───────────────────────────────────────── */}
-      <section className="section-band py-20 border-b border-linen-300">
-        <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
-          <SectionLabel>Introdução</SectionLabel>
+      <section id="carnes-introducao" className="section-band py-20 border-b border-linen-300 scroll-mt-24">
+        <div className="section-inner max-w-4xl mx-auto px-6 md:px-10 flex gap-3">
+          <p className="text-[17px] text-dark/65 leading-[1.9] max-w-3xl">
+          🔪
+          </p>
           <motion.p
             custom={0}
             variants={rev}
@@ -452,10 +527,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Valor Nutricional — Carnes ────────────────────────── */}
-      <section className="section-band-soft py-20 border-b border-linen-300">
+      <section id="carnes-nutricao" className="section-band-soft py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Valor Nutricional</SectionLabel>
-          <BlockTitle>Composição das carnes</BlockTitle>
+          <BlockTitle>Composição 🥩</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -469,17 +544,17 @@ export default function Sobre() {
           <TopicoList items={carnesNutricionalTopicos} />
 
           <div className="mt-10">
-            <BlockTitle>Formas certeiras de preparar:</BlockTitle>
+            <BlockTitle>Como preparar: 📋</BlockTitle>
             <TopicoList items={carnesTecnicasTopicos} />
           </div>
         </div>
       </section>
 
       {/* ── Mise en Place ─────────────────────────────────────── */}
-      <section className="section-band py-20 border-b border-linen-300">
+      <section id="carnes-mise-en-place" className="section-band py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Mise en Place</SectionLabel>
-          <BlockTitle>Organização e preparo antecipado</BlockTitle>
+          <BlockTitle>Organização e preparo antecipado 🍚</BlockTitle>
           <motion.p
             custom={0}
             variants={rev}
@@ -494,10 +569,10 @@ export default function Sobre() {
       </section>
 
       {/* ── Curiosidade — Carnes ──────────────────────────────── */}
-      <section className="section-band-soft py-20 border-b border-linen-300">
+      <section id="cortes-bovinos" className="section-band-soft py-20 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
           <SectionLabel>Curiosidade</SectionLabel>
-          <BlockTitle>Cortes de Carne Bovina</BlockTitle>
+          <BlockTitle>🔪🥩 Cortes de Carne Bovina</BlockTitle>
 
           <div className="mt-8">
             <motion.div
@@ -511,7 +586,7 @@ export default function Sobre() {
               <img
                 src={cortesImg}
                 alt="Cortes de Carne Bovina"
-                className="h-full w-full object-center"
+                className="h-full w-full object-center border-4 border-teal-900/40 rounded-md"
               />
             </motion.div>
           </div>
@@ -521,7 +596,7 @@ export default function Sobre() {
       {/* ╔────────────────────────────────────────╗
           │   SUBTÓPICO — PESCADOS                 │
           ╚────────────────────────────────────────╝ */}
-      <section className="section-band py-24 border-b border-linen-300">
+      <section id="pescados" className="section-band py-24 border-b border-linen-300 scroll-mt-24">
         <div className="section-inner max-w-4xl mx-auto px-6 md:px-10">
 
           {/* Cabeçalho do subtópico */}
@@ -543,7 +618,7 @@ export default function Sobre() {
               className="font-pally font-semibold text-dark leading-[0.95]"
               style={{ fontSize: 'clamp(34px, 5vw, 60px)' }}
             >
-              Pescados
+              Pescados 🐟
             </h2>
             <p className="mt-4 text-[15px] text-dark/50 max-w-xl leading-relaxed">
               Ainda que os pescados contemplem crustáceos e moluscos, os peixes são os alimentos mais consumidos desse grupo no Brasil.
@@ -551,9 +626,9 @@ export default function Sobre() {
           </motion.div>
 
           {/* Valor Nutricional — Pescados */}
-          <div className="mb-16">
+          <div id="pescados-nutricao" className="mb-16 scroll-mt-24">
             <SectionLabel>Pescados · Valor Nutricional</SectionLabel>
-            <BlockTitle>Composição dos pescados</BlockTitle>
+            <BlockTitle>Composição 🔎</BlockTitle>
             <motion.p
               custom={0}
               variants={rev}
@@ -568,9 +643,9 @@ export default function Sobre() {
           </div>
 
           {/* Técnicas de Preparo — Pescados */}
-          <div className="mb-16">
+          <div id="pescados-preparo" className="mb-16 scroll-mt-24">
             <SectionLabel>Pescados · Técnicas de Preparo</SectionLabel>
-            <BlockTitle>Na cozinha profissional</BlockTitle>
+            <BlockTitle>Na cozinha profissional 👩‍🍳</BlockTitle>
             <motion.p
               custom={0}
               variants={rev}
@@ -585,8 +660,8 @@ export default function Sobre() {
           </div>
 
           {/* Curiosidade — Pescados */}
-          <div className="mb-20 p-8 bg-surface border-l-2 border-teal-400">
-            <SectionLabel>Pescados · Curiosidade</SectionLabel>
+          <div id="pescados-curiosidade" className="mb-20 p-8 bg-surface border-l-2 border-teal-400 scroll-mt-24">
+            <SectionLabel>Curiosidade</SectionLabel>
             <motion.p
               custom={0}
               variants={rev}
@@ -595,14 +670,15 @@ export default function Sobre() {
               viewport={{ once: true }}
               className="text-[15px] text-dark/55 leading-relaxed max-w-2xl"
             >
-              Curiosidade Cultural (da nossa integrante Rose!): Os Povos Indígenas do Rio Negro Você sabia que para os Povos Indígenas do Rio Negro, o peixe é o alimento principal da dieta? Por lá, ele é consumido diariamente e tem como acompanhamentos indispensáveis a farinha e o beiju. Entre as espécies mais consumidas nessa e em outras regiões do país, destacam-se: Tambaqui, Pacu e Aracu (piau); Surubim (também conhecido como pintado) e Sardinhas; Peixe da Noite: Essa espécie só é encontrada durante a época de cheia dos rios!
+              <strong>✨ Curiosidade Cultural (da nossa integrante Rose!):</strong> Os Povos Indígenas do Rio Negro Você sabia que para os Povos Indígenas do Rio Negro, o peixe é o alimento principal da dieta? 
+              <br/><br/> <strong>R:</strong> Por lá, ele é consumido diariamente e tem como acompanhamentos indispensáveis a farinha e o beiju. Entre as espécies mais consumidas nessa e em outras regiões do país, destacam-se: Tambaqui, Pacu e Aracu (piau); Surubim (também conhecido como pintado) e Sardinhas; Peixe da Noite: Essa espécie só é encontrada durante a época de cheia dos rios!
             </motion.p>
           </div>
 
           {/* Outras Preparações */}
-          <div>
-            <SectionLabel>Pescados · Outras Preparações</SectionLabel>
-            <BlockTitle className="mb-8">Além do convencional</BlockTitle>
+          <div id="pescados-preparacoes" className="scroll-mt-24">
+            <SectionLabel>Outras Preparações</SectionLabel>
+            <BlockTitle className="mb-8">Além do convencional ➡️</BlockTitle>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {outrasPreparacoes.map((prep, i) => (
@@ -627,7 +703,7 @@ export default function Sobre() {
                       {prep.titulo}
                     </p>
                     {prep.legenda && (
-                      <p className="text-[13px] text-dark/40 leading-relaxed">{prep.legenda}</p>
+                      <p className="text-[14px] text-dark/60 leading-relaxed">{prep.legenda}</p>
                     )}
                   </figcaption>
                 </motion.figure>
@@ -635,7 +711,7 @@ export default function Sobre() {
             </div>
           </div>
 
-          <p className="text-[13px] text-dark/40 leading-relaxed pt-5">
+          <p className="text-[13px] text-dark/60 leading-relaxed pt-5">
             Fonte:{' '}
             <a
               href="https://www.epagri.sc.gov.br/por-que-consumir-pescados-conheca-os-beneficios-nutricionais-dos-peixes-e-frutos-do-mar/"

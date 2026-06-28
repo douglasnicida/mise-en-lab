@@ -222,8 +222,8 @@ function MiseEnPlaceSection() {
             viewport={{ once: true }}
             className="flex flex-col justify-center"
           >
-            <h3 className="font-display mb-6 text-[23px] font-semibold leading-snug text-dark">
-              O que é Mise en Place e por que ele vai mudar a sua rotina na cozinha?
+            <h3 className="font-display mb-6 text-[23px] leading-snug text-dark font-bold">
+               🥗 O que é Mise en Place e por que ele vai mudar a sua rotina na cozinha?
             </h3>
  
             <div className="space-y-4 text-[15px] leading-relaxed text-dark/58 text-justify">
@@ -359,7 +359,7 @@ function MiseEnPlaceSection() {
           >
             <p className="eyebrow mb-2 text-stone-500 font-bold">Na prática</p>
             <h3 className="font-display text-[22px] font-semibold text-dark">
-              Mise en Place do Antepasto de Berinjela
+              Mise en Place do Antepasto de Berinjela 🍽️
             </h3>
           </motion.div>
  
@@ -510,8 +510,11 @@ export default function Home() {
 
               <motion.div custom={3} variants={rev} initial="hidden" animate="show"
                 className="flex flex-col items-start justify-between flex-1">
-                <p className="max-w-[500px] text-[14px] leading-auto text-dark/58">
-                    (Apresentação do Grupo)
+                <p className="max-w-[500px] text-[15px] leading-auto text-dark/58 text-justify">
+                    Sejam bem-vindos(as) ao nosso espaço de vivências e aprendizados em Nutrição! 👩‍🍳💚<br/><br/> 
+                    Este site é o nosso portfolio digital, desenvolvido para a disciplina de Técnica Dietética do curso de Nutrição da UNICAMP e ele funciona como um diário da nossa jornada acadêmica ao longo do semestre, sendo planejado para acompanhar de perto a nossa evolução prática e teórica, conectando os conceitos de sala de aula com os desafios reais da atuação do nutricionista.
+                    <br/><br/>
+                    A disciplina de Técnica Dietética (TD) é uma das bases mais interessantes da Nutrição. Seu objetivo central é compreender profundamente as transformações físicas, químicas e biológicas que os alimentos sofrem durante todas as etapas de seu preparo. Através dela, aprendemos a enxergar a cozinha e a dietética como áreas científicas essenciais para promover a saúde, otimizar nutrientes no prato e valorizar a nossa identidade cultural.
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
                   <Link to="/trabalhos" className="btn-cta group">
